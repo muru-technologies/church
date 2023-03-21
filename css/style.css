@@ -341,3 +341,15 @@ img {
     box-shadow: 0 1px 4px rgb(0 0 0 / 1.5);
     background-color: white;
   }
+
+
+/** ministry Icon**/
+.ministry-icon-cont {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.ministry-icon {
+    padding-top: 25px;
+}
