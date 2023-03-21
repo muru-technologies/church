@@ -134,6 +134,20 @@ footer:before {
     font-size: 5vw;
     position: inherit;
     position: relative;
+    margin-left: 50px;
+}
+
+
+@media screen and (max-width: 1150px) {
+    .header-text {
+        font-size: 5vw;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .header-text {
+        font-size: 10vw;
+    }
 }
 
 .programs {
@@ -295,4 +309,29 @@ img {
 
 .calender-clock {
     margin-top: -25px;
+}
+
+/** contact page **/
+.contact-details {
+    height: auto;
+    background-image: url(../assets/c1.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+}
+
+.contact-details::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(156, 6, 6, 0.5);
+    border-radius: 10px;
+}
+
+.cnct-details {
+    position: inherit;
 }
