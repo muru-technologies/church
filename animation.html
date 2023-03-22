@@ -115,72 +115,130 @@
             color: #0d6efd;
             text-decoration: underline;
         }
+
+        /* Preloader */
+
+        /* Preloader styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 9999;
+  }
+  
+  #loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 10px solid #333;
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Hide content until page is fully loaded */
+  #content {
+    display: none;
+  }
+  
     </style>
 </head>
   <body>
 
-    <div class="nav-c-slider">
+    <!-- Preloader -->
+<div id="preloader">
+    <div id="loader"></div>
+  </div>
 
-        <a class="next-slide" href="JavaScript:void(0)" data-slide="1">
+    <div id="content" class="wrapper" >
+        <div class="nav-c-slider">
 
-            <img class="animate__animated animate__fadeIn " src="./assets/pst1.png" alt="img 1">
+            <a class="next-slide" href="JavaScript:void(0)" data-slide="1">
 
-        </a>
+                <img class="animate__animated animate__fadeIn " src="./assets/pst1.png" alt="img 1">
 
-        <a class="next-slide" href="JavaScript:void(0)" data-slide="2">
+            </a>
 
-            <img class="animate__animated animate__fadeIn" src="./assets/pst2.png" alt="img 2">
+            <a class="next-slide" href="JavaScript:void(0)" data-slide="2">
 
-        </a>
+                <img class="animate__animated animate__fadeIn" src="./assets/pst2.png" alt="img 2">
 
-        <a class="next-slide" href="JavaScript:void(0)" data-slide="3">
+            </a>
 
-            <img class="animate__animated animate__fadeIn" src="./assets/pst1.png" alt="img 3">
+            <a class="next-slide" href="JavaScript:void(0)" data-slide="3">
 
-        </a>
+                <img class="animate__animated animate__fadeIn" src="./assets/pst1.png" alt="img 3">
 
-        <a class="next-slide" href="JavaScript:void(0)" data-slide="4">
+            </a>
 
-            <img class="animate__animated animate__fadeIn" src="./assets/pst2.png" alt="img 4">
+            <a class="next-slide" href="JavaScript:void(0)" data-slide="4">
 
-        </a>
+                <img class="animate__animated animate__fadeIn" src="./assets/pst2.png" alt="img 4">
 
-        <div class="slider-main-img">
+            </a>
 
-            <img src="./assets/pst2.png" alt="img 5">
+            <div class="slider-main-img">
+
+                <img src="./assets/pst2.png" alt="img 5">
+
+            </div>
 
         </div>
-
     </div>
 
+
     <script src="./js/jquery.min.js"></script>
-  <script type="text/javascript" src="./js/slick.min.js"></script>
+    <script type="text/javascript" src="./js/slick.min.js"></script>
 
-  <script type="text/javascript">
-  
-        // C-Slider
+    <script type="text/javascript">
+         
     
-        $('.next-slide').on('click', function() {
-    
-          var img_src = "";
-    
-          $('.next-slide.nav-active').removeClass('nav-active');
-    
-          $(this).addClass('nav-active');
-    
-          img_src = $(this).html();
-    
-          $('.slider-main-img').html(img_src);
-    
-    
-    
-          var slideno = $(this).data('slide');
-    
-          $('.c-slider').slick('slickGoTo', slideno - 1, true);
-    
-        });
+            // C-Slider
+        
+            $('.next-slide').on('click', function() {
+        
+            var img_src = "";
+        
+            $('.next-slide.nav-active').removeClass('nav-active');
+        
+            $(this).addClass('nav-active');
+        
+            img_src = $(this).html();
+        
+            $('.slider-main-img').html(img_src);
+        
+        
+        
+            var slideno = $(this).data('slide');
+        
+            $('.c-slider').slick('slickGoTo', slideno - 1, true);
+        
+            });
 
-  </script>
+
+    </script>
+
+    <script>
+         // Wait for the page to fully load
+window.addEventListener('load', function() {
+    // Hide the preloader
+    document.getElementById('preloader').style.display = 'none';
+    // Show the content
+    document.getElementById('content').style.display = 'block';
+  });
+    </script>
 
   </body>
 </html>
