@@ -43,7 +43,7 @@
       {% comment %} id="cont" {% endcomment %}
       <div > 
         <!-- Navbar Start-->
-          <nav class="mt-2 container-fluid navbar bg-body-tertiary navbar-expand-lg fixed-top shadow-sm p-3 bg-body-tertiary position-sticky">
+          <nav class="mt-2 container-fluid navbar bg-body-tertiary navbar-expand-lg fixed-top shadow-sm p-3 bg-body-tertiary position-sticky" id="topheader">
               <div class="container-fluid">
 
                 <a class="navbar-brand" href="{% url 'church:index' %}"> 
@@ -58,7 +58,7 @@
                   <div class="offcanvas-header">
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
-                  <div class="offcanvas-body">
+                  <div class="offcanvas-body" id="mynav">
 
                     <ul class="navbar-nav justify-content-center mx-auto flex-grow-1 pe-3">
                       <li class="nav-item">
@@ -166,6 +166,10 @@
 
                       <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{% url 'church:event_list' %}">Events</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'church:contact' %}">Contact Us</a>
                       </li>
 
                     </ul>
@@ -297,57 +301,40 @@
       <script src="{% static './js/main.js' %}"></script>
 
       <script src="{% static './js/jquery.min.js' %}"></script>
+
       <script type="text/javascript" src="{% static './js/slick.min.js' %}"></script>
 
-      <script type="text/javascript">
-      
-            // C-Slider
-        
-            $('.next-slide').on('click', function() {
-        
-              var img_src = "";
-        
-              $('.next-slide.nav-active').removeClass('nav-active');
-        
-              $(this).addClass('nav-active');
-        
-              img_src = $(this).html();
-        
-              $('.slider-main-img').html(img_src);
-        
-        
-        
-              var slideno = $(this).data('slide');
-        
-              $('.c-slider').slick('slickGoTo', slideno - 1, true);
-        
-            });
+      <script>
 
-      </script>
-      <script>
-          
-        $(document).ready(function () {
- 
-          $('ul.navbar-nav > li')
-                  .click(function (e) {
-              $('ul.navbar-nav > li')
-                  .removeClass('active');
-              $(this).addClass('active');
-          });
-      });
-      </script>
-      
-      <script>
-          
-        $(document).ready(function () {
- 
-          $('ul.navbar-nav > li')
-                  .click(function (e) {
-              $('ul.navbar-nav > li')
-                  .removeClass('active');
-              $(this).addClass('active');
-          });
-      });
+        // navbar
+
+        $( '#topheader .navbar-nav a' ).on( 'click', function () {
+          $( '#topheader .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+          $( this ).parent( 'li' ).addClass( 'active' );
+        });
+              
+        // C-Slider
+    
+        $('.next-slide').on('click', function() {
+    
+          var img_src = "";
+    
+          $('.next-slide.nav-active').removeClass('nav-active');
+    
+          $(this).addClass('nav-active');
+    
+          img_src = $(this).html();
+    
+          $('.slider-main-img').html(img_src);
+    
+    
+    
+          var slideno = $(this).data('slide');
+    
+          $('.c-slider').slick('slickGoTo', slideno - 1, true);
+    
+        });
+
       </script>
 
       <!-- Animate on Scroll -->

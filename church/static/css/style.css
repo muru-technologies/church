@@ -32,7 +32,7 @@ body{
     width: 70px;
 }
 
-.navbar-nav>.active>a {
+#topheader .navbar-nav li.active > a{
     color: #dc3545;
     border-bottom: black solid 2px;
 }
