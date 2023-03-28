@@ -1,0 +1,381 @@
+/* Preloader */
+
+#loader {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    /* centers the loading animation horizontally one the screen */
+    top: 50%;
+    /* centers the loading animation vertically one the screen */
+    background-image: url(../assets/preloader.gif);
+    /* path to your loading animation */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: -100px 0 0 -100px;
+    /* is width and height divided by two */
+}
+
+#cont {
+    display: none;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.logo{
+    width: 70px;
+}
+
+.navbar-nav>.active>a {
+    color: #dc3545;
+    border-bottom: black solid 2px;
+}
+
+.nav-item{
+    font-weight: bolder;
+    color: black;
+}
+
+.nav-item:hover{
+    color: #dc3545;
+    transition: .5s;
+}
+
+.drop-links{
+    color: #dc3545;
+}
+.drop-links:hover{
+    color: black;
+    transition: .5s; 
+}
+
+.info-img{
+    width: 70px;
+    height: 70px;
+}
+
+.info-img:hover{
+    width: 75px;
+    height: 75px;
+    transition: .5s;
+}
+
+.custom-donation-amount input {
+    width: 84%;
+    padding: 20px;
+    border: 0px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.sermon-title{
+    color: black;
+}
+
+.sermon-title:hover{
+    color: #dc3545;
+    transition: .5s;
+}
+
+.floating-bar{
+    width: 40px;
+}
+
+.sermon-body{
+    margin-top: px;
+}
+
+.sermon-link{
+    color: black;
+}
+
+.sermon-link:hover{
+    color: white;
+    transition: .5s;
+}
+
+footer {
+    height: auto;
+    background-image: url(../assets/footer.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+footer:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(5, 5, 39, 0.3);
+}
+
+.footer-cont {
+    position: inherit;
+}
+
+.foot-link{
+    color: white;
+}
+
+.foot-link:hover{
+    color: #dc3545;
+    transition: .5s;
+    padding-left: 10px;
+}
+
+/* About page */
+
+.about-header {
+    height: 30vh;
+    width: 100%;
+    background-image: url(../assets/c2.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.about-header::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(5, 5, 39, 0.5);
+}
+
+.header-text {
+    font-weight: bolder;
+    font-size: 3vw;
+    position: inherit;
+    position: relative;
+    margin-left: 50px;
+}
+
+
+@media screen and (max-width: 1150px) {
+    .header-text {
+        font-size: 5vw;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .header-text {
+        font-size: 10vw;
+    }
+}
+
+.programs {
+    height: auto;
+    background-image: url(../assets/programs.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.programs::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(224, 63, 57, 0.356);
+}
+
+.program-cont {
+    position: inherit;
+}
+
+.program-img {
+    width: 150px;
+    height: 150px;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: red;
+    outline: 0;
+    color: black;
+}
+
+
+.benefits-img{
+    width: 100%;
+    height: auto;
+}
+
+
+/* Pastor image carousel */
+
+
+.nav-c-slider:before {
+    content: "";
+    width: 50px;
+    height: 450px;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    z-index: 0;
+}
+
+.nav-c-slider {
+    width: 100%;
+}
+
+.nav-c-slider {
+    position: relative;
+    border: 3px solid #e5e5e5;
+    border-radius: 100%;
+    min-height: 400px;
+}
+.nav-c-slider a:nth-child(1) .about-pst {
+
+    display:none;
+}
+
+.nav-c-slider a:nth-child(1) {
+
+    top: 3%;
+    left: 11%;
+}
+
+.nav-c-slider a:nth-child(2) .about-pst {
+
+    display:none;
+}
+
+.nav-c-slider a:nth-child(2) {
+    top: 26%;
+    left: -6%;
+}
+
+.nav-c-slider a:nth-child(3) .about-pst {
+
+    display:none;
+}
+
+.nav-c-slider a:nth-child(3) {
+    top: 59%;
+    left: -5%;
+}
+
+.nav-c-slider a:nth-child(4) .about-pst {
+
+    display:none;
+}
+
+.nav-c-slider a:nth-child(4) {
+    top: 82%;
+    left: 14%;
+}
+
+.slider-main-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.slider-main-img img {
+    width: 100%;
+    border-radius: 100%;
+}
+
+.nav-c-slider a img, .slider-main-img img {
+    object-fit: cover;
+}
+img {
+    vertical-align: top;
+}
+
+.nav-c-slider a {
+    position: absolute;
+}
+.nav-c-slider a img, .slider-main-img img {
+    object-fit: cover;
+}
+.nav-c-slider a img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    border: 3px solid #fff;
+    box-shadow: rgb(0 0 0 / 17%) 3px 6px 7px 0px;
+    -webkit-box-shadow: rgb(0 0 0 / 17%) 3px 6px 7px 0px;
+    -moz-box-shadow: rgb(0 0 0 / 17%) 3px 6px 7px 0px;
+}
+
+/** Events **/
+.news-event-img {
+    box-shadow: 0 1.5px 5px rgb(0 0 0 / 1.5);
+}
+
+.news-event-body-cont {
+    box-shadow: 0 1.5px 5px rgb(0 0 0 / 1.5);
+    margin-top: -30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.calender-clock {
+    margin-top: -25px;
+}
+
+/** contact page **/
+.contact-details {
+    height: auto;
+    background-image: url(../assets/c1.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+}
+
+.contact-details::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(156, 6, 6, 0.5);
+    border-radius: 10px;
+}
+
+.cnct-details {
+    position: inherit;
+}
+
+/** Give Page **/
+.payment-method{
+    box-shadow: 0 1px 4px rgb(0 0 0 / 1.5);
+    background-color: white;
+  }
+
+
+/** ministry Icon**/
+.ministry-icon-cont {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.ministry-icon {
+    padding-top: 25px;
+}

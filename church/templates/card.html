@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Card
+{% endblock %}
+
+{% block content %}
+     <!-- header image -->
+
+     <div class="about-header position-relative">
+        <h1 class="header-text text-light top-50">Give</h1>
+      </div>
+
+      <!-- header image end-->
+      
+      <div class="container-fluid">
+
+        <div class="row justify-content-center mx-auto container pt-4 mt-5">
+
+            
+
+            <div class="p-5 payment-method  col-lg-5 col-md-8 col-10 mb-5">
+
+              <form action="">
+                <h2 class="fw-bold text-center pb-3">Mpesa Option</h2>
+
+                <input type="number" class="form-control mb-3" placeholder="Card Number" aria-label="Phone Number" aria-describedby="basic-addon1">
+
+                <input type="number" class="form-control mb-3" placeholder="CVV" aria-label="Phone Number" aria-describedby="basic-addon1">
+
+                <input type="date" class="form-control mb-3" placeholder="Date of Expiry" aria-label="Phone Number" aria-describedby="basic-addon1">
+
+                <input type="submit" value="Give" class="btn btn-md btn-danger btn-outline-dark text-center fw-medium border-0">
+
+              </form>
+              
+            </div>
+
+
+        </div>
+{% endblock %}

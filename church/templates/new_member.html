@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+New Member?
+{% endblock %}
+
+{% block content %}
+<!-- header image -->
+
+<div class="about-header position-relative">
+    <h1 class="header-text text-light top-50" >New Member?</h1>
+  </div>
+
+  <!-- header image end-->
+  
+  <div class="container-fluid">
+
+    <h4 class="fw-bold mt-4 text-center">
+        Welcome to Our Church
+    </h4>        
+
+    <div class="row pt-4 justify-content-center gap-1">
+
+
+      <div class="col-lg-4 col-md-5 col-12 align-self-center">
+        <h5 class="fw-bold"> At the Reception</h5>
+        <p>Meet our Ministers</p>
+        <p>Get Introduced to various departments and Ministries</p>
+        <p>Have a cup of coffee</p>
+      </div>
+
+      <div class="col-lg-6">
+        <h4 class="fw-bold mt-4 text-center mb-3">
+            Lets know you better
+        </h4>
+        <form action="">
+                
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6 col-10">
+                    <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="col-lg-5 col-md-6 col-10">
+                    <input type="number" class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="col-lg-10 col-md-12 col-10">
+                    <input type="text" class="form-control mb-3" placeholder="Current Church" aria-label="Subject" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="col-lg-10 col-md-12 col-10">
+                    <input type="text" class="form-control mb-3" placeholder="Area of Residence" aria-label="Subject" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-5 col-md-6 col-10">
+                    <button class="btn btn-danger btn-md fw-bold" type="submit">Register</button>
+                </div>
+            </div>
+        </form>
+      </div>
+      
+    </div>
+{% endblock %}

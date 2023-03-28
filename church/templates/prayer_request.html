@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block content %}
+<!-- header image -->
+
+<div class="about-header position-relative">
+    <h1 class="header-text text-light top-50 start-50">Prayer Request</h1>
+  </div>
+
+  <!-- header image end-->
+  
+  <div class="container-fluid">
+
+    <h4 class="fw-bold mt-4 text-center">
+        Lets Pray With you
+    </h4>        
+
+    <div class="row pt-4 justify-content-center gap-4">
+
+      <div class="col-lg-4 col-md-5 col-12" style="text-align: justify;">
+        Just some Random text about Prayer Request.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed ut quisquam veniam blanditiis dignissimos natus pariatur cumque deleniti voluptates sint laborum, consequatur aliquam assumenda animi quis vitae officiis eveniet fugiat.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio excepturi modi qui magni voluptatem vero eius, dicta illum id eum numquam voluptate consequuntur doloremque velit animi et nihil molestias earum!
+      </div>
+
+      <div class="col-lg-4 col-md-5 col-12 align-self-center">
+        <figure class="text-center">
+            <blockquote class="blockquote">
+              <p>Ask and you shall be given, Knock and the dorr shall be open</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              Just some Random Verse in the <cite title="Source Title">Bible</cite>
+            </figcaption>
+          </figure>
+      </div>
+
+      <div class="col-10">
+        <h4 class="fw-bold mt-4 text-center mb-3">
+            Prayer Request Form.
+        </h4>
+        <form action="">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6 col-10">
+                    <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="col-lg-5 col-md-6 col-10">
+                    <input type="number" class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="col-lg-10 col-md-12 col-10">
+                    <input type="text" class="form-control mb-3" placeholder="Subject" aria-label="Subject" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="col-lg-10 col-md-12 col-10">
+                    <textarea class="form-control mb-3" name="Your Message" placeholder="Your Message" style="height: 200px;"></textarea>
+                </div>
+            </div>
+
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-5 col-md-6 col-10">
+                    <button class="btn btn-danger btn-md fw-bold" type="submit">Request</button>
+                </div>
+            </div>
+        </form>
+      </div>
+      
+    </div>
+{% endblock %}
