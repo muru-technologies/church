@@ -46,7 +46,7 @@
           <nav class="mt-2 container-fluid navbar bg-body-tertiary navbar-expand-lg fixed-top shadow-sm p-3 bg-body-tertiary position-sticky">
               <div class="container-fluid">
 
-                <a class="navbar-brand" href="{% url 'church:index' %}">
+                <a class="navbar-brand" href="{% url 'church:index' %}"> 
                   <img src="{% static './assets/logo.png' %}" alt="logo" class="logo img">
                 </a>
 
@@ -61,8 +61,8 @@
                   <div class="offcanvas-body">
 
                     <ul class="navbar-nav justify-content-center mx-auto flex-grow-1 pe-3">
-                      <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url 'church:index' %}">Home</a>
                       </li>
 
 
@@ -82,7 +82,7 @@
                               <div class="col-4 text-wrap">
                                 <h3> INFORMATION CENTER</h3>
                                   <p> 
-                                    Welcome to Africa Inland Church of Kenya, a house of God where we gather to praise and worship the creator. 
+                                    Welcome to ACK St. Peter's Cathedral, a house of God where we gather to praise and worship the creator. 
                                     Get all of our Resources herein.
                                   </p>
                               </div>
@@ -92,13 +92,13 @@
                                   
                                   <ul class="list-unstyled ">    
                                     <li class="pb-1">
-                                      <a href="child-dedication.html" class="text-decoration-none drop-links"> Child Dedication</a>
+                                      <a href="{% url 'church:child_dedication' %}" class="text-decoration-none drop-links"> Child Dedication</a>
                                     </li>
                                     <li class="pb-1">
-                                      <a href="baptism.html" class="text-decoration-none drop-links"> Baptism</a>
+                                      <a href="{% url 'church:baptism' %}" class="text-decoration-none drop-links"> Baptism</a>
                                     </li>
                                     <li class="pb-1">
-                                      <a href="getting-married.html" class="text-decoration-none drop-links"> Getting Married</a>
+                                      <a href="{% url 'church:getting_married' %}" class="text-decoration-none drop-links"> Getting Married</a>
                                     </li>
 
                                   </ul>
@@ -122,13 +122,13 @@
                                   
                                   <ul class="list-unstyled ">
                                     <li class="pb-1">
-                                      <a href="prayer-request.html" class="text-decoration-none drop-links"> Prayer Requests</a>
+                                      <a href="{% url 'church:prayer_request' %}" class="text-decoration-none drop-links"> Prayer Requests</a>
                                     </li>
                                     <li class="pb-1">
-                                      <a href="testimony.html" class="text-decoration-none drop-links"> Give a Testimony</a>
+                                      <a href="{% url 'church:testimony' %}" class="text-decoration-none drop-links"> Give a Testimony</a>
                                     </li>
                                     <li class="pb-1"> 
-                                      <a href="new-member.html" class="text-decoration-none drop-links"> New Member?</a>
+                                      <a href="{% url 'church:new_member' %}" class="text-decoration-none drop-links"> New Member?</a>
                                     </li>
 
                                   </ul>
@@ -136,16 +136,16 @@
                                   <ul class="list-unstyled">
                                     <h4> Ministries </h4>
                                     <li class="pb-1">
-                                      <a href="men.html" class="text-decoration-none drop-links"> Men</a>
+                                      <a href="{% url 'church:men' %}" class="text-decoration-none drop-links"> Men</a>
                                     </li>
                                     <li class="pb-1">
-                                      <a href="women.html" class="text-decoration-none drop-links"> Women</a>
+                                      <a href="{% url 'church:women' %}" class="text-decoration-none drop-links"> Women</a>
                                     </li>
                                     <li class="pb-1">
-                                      <a href="youth.html" class="text-decoration-none drop-links"> Youth</a>
+                                      <a href="{% url 'church:youth' %}" class="text-decoration-none drop-links"> Youth</a>
                                     </li>
                                     <li class="pb-1">
-                                      <a href="sunday-school.html" class="text-decoration-none drop-links"> Sunday School</a>
+                                      <a href="{% url 'church:sunday_school' %}" class="text-decoration-none drop-links"> Sunday School</a>
                                     </li>
                                   </ul>
                               </div>
@@ -161,11 +161,11 @@
                       </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="sermons.html">Sermons</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'church:sermon_list' %}">Sermons</a>
                       </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="events.html">Events</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'church:event_list' %}">Events</a>
                       </li>
 
                     </ul>
@@ -174,7 +174,7 @@
                   <div>
                     <a href="" class="p-3 btn btn-sm btn-danger fw-bold btn-outline-dark border-0" aria-current="page" href="#">Live Stream</a>
                     
-                    <a class="p-3 btn btn-sm btn-danger fw-bold btn-outline-dark border-0" aria-current="page" href="give.html">Give</a>
+                    <a class="p-3 btn btn-sm btn-danger fw-bold btn-outline-dark border-0" aria-current="page" href="{% url 'church:give' %}">Give</a>
                     
                   </div>
                   
@@ -223,10 +223,11 @@
               <div class="col-lg-2 col-md-5 col-10 ">
                 <h4 class="fw-bold text-light"> Quick Links </h4>
                 <ul class="list-unstyled">
-                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link">Home</a></li>
-                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link">About Us</a></li>
-                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link">Sermons</a></li>
-                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link">Contact Us</a></li>
+                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:index' %}" class="text-decoration-none foot-link">Home</a></li>
+                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:about' %}" class="text-decoration-none foot-link">About Us</a></li>
+                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:sermon_list' %}" class="text-decoration-none foot-link">Sermons</a></li>
+                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:event_list' %}" class="text-decoration-none foot-link">Events</a></li>
+                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:contact' %}" class="text-decoration-none foot-link">Contact Us</a></li>
                 </ul>
                 
               </div>
@@ -238,16 +239,13 @@
                     <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Media Library</a>
                   </li>
                   <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> BroadCast Schedule</a>
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:child_dedication' %}" class="text-decoration-none foot-link"> Child Dedication</a>
                   </li>
                   <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Child Dedication</a>
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:baptism' %}" class="text-decoration-none foot-link"> Baptism</a>
                   </li>
                   <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Baptism</a>
-                  </li>
-                  <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Getting Married</a>
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:getting_married' %}" class="text-decoration-none foot-link"> Getting Married</a>
                   </li>
 
                 </ul>
@@ -257,16 +255,16 @@
                 <ul class="list-unstyled">
                   <h4 class="fw-bold text-light"> Ministries </h4>
                   <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Men</a>
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:men' %}" class="text-decoration-none foot-link"> Men</a>
                   </li>
                   <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Women</a>
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:women' %}" class="text-decoration-none foot-link"> Women</a>
                   </li>
                   <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Youth</a>
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:youth' %}" class="text-decoration-none foot-link"> Youth</a>
                   </li>
                   <li class="pb-1">
-                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="" class="text-decoration-none foot-link"> Sunday School</a>
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:sunday_school' %}" class="text-decoration-none foot-link"> Sunday School</a>
                   </li>
                 </ul>
               </div>
