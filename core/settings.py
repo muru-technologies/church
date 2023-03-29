@@ -14,6 +14,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
+from easy_thumbnails.conf import Settings as thumbnail_settings
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+        
+    # church app
+    'church',
     
     # ck-editor 
     'ckeditor',
@@ -51,8 +56,9 @@ INSTALLED_APPS = [
     # ck-editor uploader
     'ckeditor_uploader',
     
-    # church app
-    'church',
+    # Image cropping
+    'easy_thumbnails',
+    'image_cropping',
 ]
 
 MIDDLEWARE = [
@@ -353,4 +359,12 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+
+# image Cropping 
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+
+IMAGE_CROPPING_SIZE_WARNING = True
 

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Sermon
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -8,7 +10,10 @@ def about(request):
     return render(request, 'about.html')
 
 def sermon_list(request):
-    return render(request, 'sermons.html')
+    sermons = Sermon.objects.filter(status='publish').order_by('-publish')
+    return render(request, 
+                  'sermons.html', 
+                  {'sermons': sermons})
 
 def sermon_detail(request):
     return render(request, 'sermon_detail.html')
