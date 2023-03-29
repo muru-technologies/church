@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Sermon
 
@@ -14,9 +14,18 @@ def sermon_list(request):
     return render(request, 
                   'sermons.html', 
                   {'sermons': sermons})
+    
 
-def sermon_detail(request):
-    return render(request, 'sermon_detail.html')
+def sermon_detail(request, year, month, day, sermon):
+    sermon = get_object_or_404(Sermon, slug=sermon,
+                               status='publish',
+                               publish__year=year,
+                               publish__month=month,
+                               publish__day=day)
+    return render(request, 
+                  'sermon_detail.html',
+                  {'sermon': sermon})
+    
 
 def event_list(request):
     return render(request, 'events.html')

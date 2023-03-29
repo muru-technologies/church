@@ -11,7 +11,7 @@ urlpatterns = [
     
     path('sermons/', views.sermon_list, name='sermon_list'),
     
-    path('sermon_detail/', views.sermon_detail, name='sermon_detail'),
+    path('<int:year>/<int:month>/<int:day>/<slug:sermon>/', views.sermon_detail, name='sermon_detail'),
     
     path('events/', views.event_list, name='event_list'),
     
