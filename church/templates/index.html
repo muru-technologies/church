@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cropping %}
+{% load church_tags %}
 
 {% block title %}
 ACK St. Peters
@@ -108,41 +110,10 @@ ACK St. Peters
 
     <div class="row justify-content-center mt-5 gap-3">
 
-      <h2 class="fw-bold text-center text-uppercase mb-5">Share, Inspire, Innovate</h2>
+      <h3 class="fw-bold text-center text-uppercase mb-5">Latest Sermons</h3>
 
-      <!-- Single Cont -->
-      <div class="col-lg-3 col-md-4 col-8">
-
-        <div class="card shadow-sm position-relative" style="width: auto;">
-
-          <img src="{% static './assets/sermon.jpg' %}" class="card-img-top" alt="sermin-img">
-
-          <div class="bg-danger bg-opacity-75 text-center position-absolute top-50 start-100 translate-middle rounded-pill floating-bar">
-            
-            <a href="" class="">
-              <span class="fa fa-youtube text-center pt-3 sermon-link"></span>
-            </a>
-
-            <hr class="text-light position-relative">
-            <a href="">
-              <span class="fa-solid fa-book-open sermon-link text-center pt-2 pb-3"></span>
-            </a>
-          </div>
-
-          <div class="card-body sermon-body">
-            <p class="text-uppercase text-danger opacity-100" style="font-size: smaller;">Juma Antony / OCT 23, 2022</p>
-            <h5 class="card-title">
-              <a href="" class="text-decoration-none sermon-title"> Spiritually Reborn</a>
-            </h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            
-          </div>
-        
-        </div>
-                      
-      </div>
-
-
+      {% show_latest_sermons %}
+      
     </div>
 
     <!-- Stand Up with the church -->

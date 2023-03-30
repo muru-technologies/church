@@ -1,0 +1,40 @@
+{% load cropping %}
+
+{% for sermon in latest_sermons %}
+
+<!-- Single Cont -->
+<div class="col-lg-3 col-md-4 col-8">
+
+    <div class="card shadow-sm position-relative" style="width: auto;">
+                
+      <img src="{% cropped_thumbnail sermon "cropping" %}" class="card-img-top" alt="sermin-img">
+
+      <div class="bg-danger bg-opacity-75 text-center position-absolute top-50 start-100 translate-middle rounded-pill floating-bar">
+        
+        <a href="{{ sermon.youtube }}" target="_blank" class="">
+          <span class="fa fa-youtube text-center pt-3 sermon-link"></span>
+        </a>
+
+        <hr class="text-light position-relative">
+        <a href="{{ sermon.get_absolute_url }}">
+          <span class="fa-solid fa-book-open sermon-link text-center pt-2 pb-3"></span>
+        </a>
+      </div>
+
+      <div class="card-body sermon-body">
+        <p class="text-uppercase text-danger opacity-100" style="font-size:smaller; margin-bottom: -2px;">{{ sermon.preacher }} / {{ sermon.publish | date }}</p>
+        <h4 class="card-title mt-2">
+          <a href="{{ sermon.get_absolute_url }}" class="text-decoration-none sermon-title text-capitalize text-center"> {{ sermon.title }} </a>
+        </h4>
+          {% autoescape off %}
+            <p class="card-text">{{ sermon.content | linebreaks | truncatechars:80 }}</p>
+          {% endautoescape %}
+        
+      </div>
+    
+    </div>  
+  </div>
+
+{% empty %}
+<h4 class="fw-bold text-center mt-5"> There are no sermons yet. Please Check in Later </h4>
+{% endfor %}
