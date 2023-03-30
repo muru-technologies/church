@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% load cropping %}
+
 {% block title %}
 Events
 {% endblock %}
@@ -20,166 +22,60 @@ Events
     <!-- Sermons -->
     <div class="row gap-5 justify-content-center mt-4">
 
-        <!-- single news&event -->
-        <div class="col-lg-3 col-md-4 col-9 mt-3">
-            <div class="card w-100 news-event-cont border-0" data-aos="zoom-in-up" data-aos-duration="1000">
-                <img src="./assets/construction.png" class="card-img-top img news-event-img " alt="sermon feature img">
-
-                <div class=" card-body text-center news-event-body-cont bg-light hvr-float">
-                    <div class="calender-clock text-start bg-danger p-1 rounded fw-bold text-light">
-                        <i class="fa-solid fa-calendar-days"></i>&nbsp &nbsp 23rd Oct 2021 1200hrs
-                    </div>
-                    <h4 class="card-title mt-3">
-                        <a href="eventsdetail.html" class="text-decoration-none text-capitalize sermon-title fw-bold" target="_blank" rel="noopener noreferrer">
-                                Laying down a new Foundation
-                            </a>
-                    </h4>
-
-                    <p class="card-text text-start">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolores itaque, eum dignissimos laborum repudiandae ...
-
-                    </p>
-                    <a href="eventdetail.html" class="btn btn-danger btn-md btn-outline-dark border-0 fw-bold">
-                            Learn More
-                        </a>
-                </div>
-            </div>
-        </div>
-
-         <!-- single news&event -->
-         <div class="col-lg-3 col-md-4 col-9 mt-3">
-            <div class="card w-100 news-event-cont border-0" data-aos="zoom-in-up" data-aos-duration="1000">
-                <img src="./assets/construction.png" class="card-img-top img news-event-img " alt="sermon feature img">
-
-                <div class=" card-body text-center news-event-body-cont bg-light hvr-float">
-                    <div class="calender-clock text-start bg-danger p-1 rounded fw-bold text-light">
-                        <i class="fa-solid fa-calendar-days"></i>&nbsp &nbsp 23rd Oct 2021 1200hrs
-                    </div>
-                    <h4 class="card-title mt-3">
-                        <a href="eventsdetail.html" class="text-decoration-none text-capitalize sermon-title fw-bold" target="_blank" rel="noopener noreferrer">
-                                Laying down a new Foundation
-                            </a>
-                    </h4>
-
-                    <p class="card-text text-start">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolores itaque, eum dignissimos laborum repudiandae ...
-
-                    </p>
-                    <a href="eventdetail.html" class="btn btn-danger btn-md btn-outline-dark border-0 fw-bold">
-                            Learn More
-                        </a>
-                </div>
-            </div>
-        </div>
+        {% for event in event_list %}
 
         <!-- single news&event -->
         <div class="col-lg-3 col-md-4 col-9 mt-3">
             <div class="card w-100 news-event-cont border-0" data-aos="zoom-in-up" data-aos-duration="1000">
-                <img src="./assets/construction.png" class="card-img-top img news-event-img " alt="sermon feature img">
+                <img src="{% cropped_thumbnail event "cropping" %}" class="card-img-top img news-event-img " alt="feature img">
 
                 <div class=" card-body text-center news-event-body-cont bg-light hvr-float">
-                    <div class="calender-clock text-start bg-danger p-1 rounded fw-bold text-light">
-                        <i class="fa-solid fa-calendar-days"></i>&nbsp &nbsp 23rd Oct 2021 1200hrs
+                    <div class="calender-clock text-start bg-danger p-1 rounded fw-medium text-light">
+                        <i class="fa-solid fa-calendar-days"></i>&nbsp &nbsp {{ event.commence_date }}
                     </div>
                     <h4 class="card-title mt-3">
-                        <a href="eventsdetail.html" class="text-decoration-none text-capitalize sermon-title fw-bold" target="_blank" rel="noopener noreferrer">
-                                Laying down a new Foundation
+                        <a href="{% url 'church:event_detail' event.slug %}" class="text-decoration-none text-capitalize sermon-title fw-bold" target="_blank" rel="noopener noreferrer">
+                                {{ event.title }}
                             </a>
                     </h4>
-
-                    <p class="card-text text-start">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolores itaque, eum dignissimos laborum repudiandae ...
-
-                    </p>
-                    <a href="eventdetail.html" class="btn btn-danger btn-md btn-outline-dark border-0 fw-bold">
-                            Learn More
-                        </a>
+                    {% autoescape off %}
+                        <p class="card-text text-start">{{ event.content | linebreaks | truncatechars:80 }}</p>
+                    {% endautoescape %}
+                    
+                    <a href="{% url 'church:event_detail' event.slug %}" class="btn btn-danger btn-md btn-outline-dark border-0 fw-bold">
+                        Learn More
+                     </a>
                 </div>
             </div>
         </div>
 
-         <!-- single news&event -->
-         <div class="col-lg-3 col-md-4 col-9 mt-3">
-            <div class="card w-100 news-event-cont border-0" data-aos="zoom-in-up" data-aos-duration="1000">
-                <img src="./assets/construction.png" class="card-img-top img news-event-img " alt="sermon feature img">
+        {% empty %}
 
-                <div class=" card-body text-center news-event-body-cont bg-light hvr-float">
-                    <div class="calender-clock text-start bg-danger p-1 rounded fw-bold text-light">
-                        <i class="fa-solid fa-calendar-days"></i>&nbsp &nbsp 23rd Oct 2021 1200hrs
-                    </div>
-                    <h4 class="card-title mt-3">
-                        <a href="eventsdetail.html" class="text-decoration-none text-capitalize sermon-title fw-bold" target="_blank" rel="noopener noreferrer">
-                                Laying down a new Foundation
-                            </a>
-                    </h4>
+        <h4 class="fw-bold text-center mt-5"> There are no events yet. Please Check in Later </h4>
 
-                    <p class="card-text text-start">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolores itaque, eum dignissimos laborum repudiandae ...
-
-                    </p>
-                    <a href="eventdetail.html" class="btn btn-danger btn-md btn-outline-dark border-0 fw-bold">
-                            Learn More
-                        </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- single news&event -->
-        <div class="col-lg-3 col-md-4 col-9 mt-3">
-            <div class="card w-100 news-event-cont border-0" data-aos="zoom-in-up" data-aos-duration="1000">
-                <img src="./assets/construction.png" class="card-img-top img news-event-img " alt="sermon feature img">
-
-                <div class=" card-body text-center news-event-body-cont bg-light hvr-float">
-                    <div class="calender-clock text-start bg-danger p-1 rounded fw-bold text-light">
-                        <i class="fa-solid fa-calendar-days"></i>&nbsp &nbsp 23rd Oct 2021 1200hrs
-                    </div>
-                    <h4 class="card-title mt-3">
-                        <a href="eventsdetail.html" class="text-decoration-none text-capitalize sermon-title fw-bold" target="_blank" rel="noopener noreferrer">
-                                Laying down a new Foundation
-                            </a>
-                    </h4>
-
-                    <p class="card-text text-start">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolores itaque, eum dignissimos laborum repudiandae ...
-
-                    </p>
-                    <a href="eventdetail.html" class="btn btn-danger btn-md btn-outline-dark border-0 fw-bold">
-                            Learn More
-                        </a>
-                </div>
-            </div>
-        </div>
-
-         <!-- single news&event -->
-         <div class="col-lg-3 col-md-4 col-9 mt-3">
-            <div class="card w-100 news-event-cont border-0" data-aos="zoom-in-up" data-aos-duration="1000">
-                <img src="./assets/construction.png" class="card-img-top img news-event-img " alt="sermon feature img">
-
-                <div class=" card-body text-center news-event-body-cont bg-light hvr-float">
-                    <div class="calender-clock text-start bg-danger p-1 rounded fw-bold text-light">
-                        <i class="fa-solid fa-calendar-days"></i>&nbsp &nbsp 23rd Oct 2021 1200hrs
-                    </div>
-                    <h4 class="card-title mt-3">
-                        <a href="eventsdetail.html" class="text-decoration-none text-capitalize sermon-title fw-bold" target="_blank" rel="noopener noreferrer">
-                                Laying down a new Foundation
-                            </a>
-                    </h4>
-
-                    <p class="card-text text-start">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolores itaque, eum dignissimos laborum repudiandae ...
-
-                    </p>
-                    <a href="eventdetail.html" class="btn btn-danger btn-md btn-outline-dark border-0 fw-bold">
-                            Learn More
-                        </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+        
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {%if page_obj.has_previous %} {# whether the previous page exists #}
+                    <li class="page-item bg-dark rounded">
+                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link bg-transparent text-danger fw-bold rounded">Previous</a>
+                    </li>
+                {% endif %}
+                <li class="page-item bg-dark rounded">
+                    <a class="page-link bg-transparent text-danger fw-bold rounded" href="#">{{page_obj.number}}</a>
+                </li>
+    
+                {% if page_obj.has_next %} {# whether the next page exists #}
+                    <li class="page-item bg-dark rounded">
+                        <a class="page-link bg-transparent text-danger fw-bold rounded" href="{{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+    
+           </nav>
 
 
-      <div class="mt-5 text-center">
-        <input type="submit" value="LOAD MORE" class="fw-medium btn btn-danger btn-outline-dark border-0 rounded-pill p-2 px-4">
-      </div>
     </div>
 
 

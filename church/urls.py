@@ -13,9 +13,9 @@ urlpatterns = [
     
     path('<int:year>/<int:month>/<int:day>/<slug:sermon>/', views.sermon_detail, name='sermon_detail'),
     
-    path('events/', views.event_list, name='event_list'),
+    path('events/', views.EventList.as_view(), name='event_list'),
     
-    path('event_detail/', views.event_detail, name='event_detail'),
+    path('<slug:slug>/', views.EventDetail.as_view(), name='event_detail'),
     
     path('contact/', views.contact, name='contact'),
     

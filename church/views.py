@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.views.generic import DetailView, ListView
 
-from .models import Sermon
+from .models import Sermon, Event
 
 # Create your views here.
 def index(request):
@@ -41,12 +42,17 @@ def sermon_detail(request, year, month, day, sermon):
                   {'sermon': sermon})
     
 
-def event_list(request):
-    return render(request, 'events.html')
+class EventList(ListView):
+    queryset = Event.objects.filter(status='publish').order_by('-publish')
+    template_name = 'events.html'
+    paginate_by = 6
+    
 
-def event_detail(request):
-    return render(request, 'event_detail.html')
-
+class EventDetail(DetailView):
+    model = Event
+    template_name = 'event_detail.html'
+    
+    
 def contact(request):
     return render(request, 'contact.html')
 

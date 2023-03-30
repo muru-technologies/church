@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Event Title
+{{ event.title }}
 {% endblock %}
 
 {% block content %}
@@ -14,57 +14,35 @@ Event Title
         <!-- Sermon detail -->
         
         <h3 class="fw-medium mt-4">
-          Laying Down A New Foundation
+          {{ event.title }}
         </h3>
 
-        <div class="row pt-4">
+        <div class="row container-fluid pt-4">
 
-          <div class="col-4">
+          <div class="col-4 text-center">
             <i class="fa-solid fa-calendar-days text-danger fa-2x"></i> 
-            <p class="pt-1">Openning Time <br>
-            <span class="text-danger pt-1 fs-6">Mon, 23, 2023 - 1000hrs </span></p>
+            <p class="pt-1 fw-medium">Openning Time <br>
+            <span class="text-danger pt-1 fs-6">{{ event.commence_date }} </span></p>
           </div>
 
-          <div class="col-4">
+          <div class="col-4 text-center">
             <i class="fa-solid fa-location text-danger fa-2x"></i> 
-            <p class="pt-1">Event Location<br>
-            <span class="text-danger pt-1 fs-6">Mombasa </span></p>
+            <p class="pt-1 fw-medium">Event Location<br>
+            <span class="text-danger pt-1 fs-6">{{ event.location }} </span></p>
           </div>
 
-          <div class="col-4">
+          <div class="col-4 text-center">
             <i class="fa-solid fa-ticket text-danger fa-2x"></i> 
-            <p class="pt-1">Tickets Information <br>
-            <span class="text-danger pt-1 fs-6">Free Registration</span></p>
+            <p class="pt-1 fw-medium">Tickets Information <br>
+            <span class="text-danger pt-1 fs-6">{{ event.entry_fee }}</span></p>
           </div>
 
-          <p style="text-align: justify;">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, eaque tenetur dolores facere odio corporis iste obcaecati rem fuga impedit quos ex quisquam veniam quas sed explicabo doloribus, totam adipisci.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius eaque illo beatae deserunt iure. Totam magnam delectus, iure, optio voluptas et hic, reiciendis in quas nam earum error eius architecto?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus totam, doloribus et necessitatibus esse laudantium excepturi sint unde voluptate? Minus voluptates modi alias illo doloribus vel at nobis culpa necessitatibus!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut rerum error, eum laudantium, nemo illum dicta cumque quia deleniti voluptatibus perspiciatis labore a et. Quisquam eveniet deserunt nulla autem expedita.
-            
-            </p>
-            <img src="./assets/c2.png" class="w-75 mx-auto" alt="">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, eaque tenetur dolores facere odio corporis iste obcaecati rem fuga impedit quos ex quisquam veniam quas sed explicabo doloribus, totam adipisci.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius eaque illo beatae deserunt iure. Totam magnam delectus, iure, optio voluptas et hic, reiciendis in quas nam earum error eius architecto?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus totam, doloribus et necessitatibus esse laudantium excepturi sint unde voluptate? Minus voluptates modi alias illo doloribus vel at nobis culpa necessitatibus!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut rerum error, eum laudantium, nemo illum dicta cumque quia deleniti voluptatibus perspiciatis labore a et. Quisquam eveniet deserunt nulla autem expedita.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis dolorum, consectetur, minima expedita tempore alias sapiente animi deserunt rerum asperiores impedit delectus nulla natus veritatis. Iure, consectetur. Unde, iure eaque!
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis optio recusandae, amet nemo ex numquam modi itaque soluta molestiae minima esse iste, delectus eum, reiciendis suscipit quam. Iste, corrupti omnis?
-          </p>
-          <br>
-          <p style="text-align: justify;">
-            <img src="./assets/c2.png" class="w-75 mx-auto" alt=""> <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, eaque tenetur dolores facere odio corporis iste obcaecati rem fuga impedit quos ex quisquam veniam quas sed explicabo doloribus, totam adipisci.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius eaque illo beatae deserunt iure. Totam magnam delectus, iure, optio voluptas et hic, reiciendis in quas nam earum error eius architecto?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus totam, doloribus et necessitatibus esse laudantium excepturi sint unde voluptate? Minus voluptates modi alias illo doloribus vel at nobis culpa necessitatibus!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut rerum error, eum laudantium, nemo illum dicta cumque quia deleniti voluptatibus perspiciatis labore a et. Quisquam eveniet deserunt nulla autem expedita.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis dolorum, consectetur, minima expedita tempore alias sapiente animi deserunt rerum asperiores impedit delectus nulla natus veritatis. Iure, consectetur. Unde, iure eaque!
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis optio recusandae, amet nemo ex numquam modi itaque soluta molestiae minima esse iste, delectus eum, reiciendis suscipit quam. Iste, corrupti omnis?
-          </p>
+          <div class="col-12" style="text-align: justify;">
+            {% autoescape off %}
+              {{ event.content | linebreaks }}
+            {% endautoescape %}
+          </div>
 
-          
         </div>
 
 
