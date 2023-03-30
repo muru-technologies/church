@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from .models import Sermon
 
@@ -11,9 +12,22 @@ def about(request):
 
 def sermon_list(request):
     sermons = Sermon.objects.filter(status='publish').order_by('-publish')
+    
+    p = Paginator(sermons, 4)
+    # getting the desired page number from url
+    page_number = request.GET.get('page')
+    try:
+        page_obj = p.get_page(page_number)  # returns the desired page object
+    except PageNotAnInteger:
+        # if page number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except EmptyPage:
+        # if page is empty then return the last page
+        page_obj = p.page(p.num_pages)
+
     return render(request, 
                   'sermons.html', 
-                  {'sermons': sermons})
+                  {'sermons': page_obj})
     
 
 def sermon_detail(request, year, month, day, sermon):

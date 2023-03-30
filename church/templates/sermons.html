@@ -48,7 +48,7 @@ Sermons
               <div class="card-body sermon-body">
                 <p class="text-uppercase text-danger opacity-100" style="font-size:smaller; margin-bottom: -2px;">{{ sermon.preacher }} / {{ sermon.publish | date }}</p>
                 <h4 class="card-title mt-2">
-                  <a href="{{ sermon.get_absolute_url }}" class="text-decoration-none sermon-title text-capitalize"> {{ sermon.title }} </a>
+                  <a href="{{ sermon.get_absolute_url }}" class="text-decoration-none sermon-title text-capitalize text-center"> {{ sermon.title }} </a>
                 </h4>
                   {% autoescape off %}
                     <p class="card-text">{{ sermon.content | linebreaks | truncatechars:80 }}</p>
@@ -64,9 +64,26 @@ Sermons
         {% endfor %}
        
 
-      <div class="mt-5 text-center">
-        <input type="submit" value="LOAD MORE" class="fw-medium btn btn-danger btn-outline-dark border-0 rounded-pill p-2 px-4">
-      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {%if sermons.has_previous %} {# whether the previous page exists #}
+                <li class="page-item bg-dark rounded">
+                    <a class="page-link bg-transparent text-danger fw-bold rounded">Previous</a>
+                </li>
+            {% endif %}
+            <li class="page-item bg-dark rounded">
+                <a class="page-link bg-transparent text-danger fw-bold rounded" href="#">{{sermons.number}}</a>
+            </li>
+
+            {%if sermons.has_next %} {# whether the next page exists #}
+                <li class="page-item bg-dark rounded">
+                    <a class="page-link bg-transparent text-danger fw-bold rounded" href="#">Next</a>
+                </li>
+            {% endif %}
+        </ul>
+
+       </nav>
+
     </div>
 
 
