@@ -25,7 +25,7 @@
 
 
 body{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .logo{
@@ -55,14 +55,14 @@ body{
     transition: .5s; 
 }
 
-.info-img{
-    width: 70px;
-    height: 70px;
+.group-img{
+    width: 100px;
+    height: 100px;
 }
 
-.info-img:hover{
-    width: 75px;
-    height: 75px;
+.group-img:hover{
+    width: 102px;
+    height: 102px;
     transition: .5s;
 }
 
@@ -136,13 +136,14 @@ footer:before {
 
 /* About page */
 
-.about-header {
-    height: 30vh;
+.header-img{
+    height: 40vh;
     width: 100%;
     background-image: url(../assets/c2.png);
-    background-position: center;
+    background-position:center bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .about-header::before {
@@ -157,16 +158,21 @@ footer:before {
 
 .header-text {
     font-weight: bolder;
-    font-size: 3vw;
+    font-size: 4vw;
     position: inherit;
     position: relative;
-    margin-left: 50px;
+    margin-left: 25px;
+    margin-top: 100px;
 }
 
 
 @media screen and (max-width: 1150px) {
     .header-text {
-        font-size: 5vw;
+        font-size: 6vw;
+    }
+
+    .organogram{
+        width: 60%;
     }
 }
 
@@ -174,6 +180,34 @@ footer:before {
     .header-text {
         font-size: 10vw;
     }
+
+    .organogram{
+        width: 100%;
+    }
+}
+
+
+.hist-item{
+
+    border-left: 2px solid rgba(5, 4, 82, 0.9);
+}
+
+.hist-item::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin-top: -16px;
+    margin-left: -18px;
+ 
+    background: #fff;
+    border: 2px solid rgba(5, 4, 82, 0.9);
+}
+
+.hist-dates{
+    margin-top: -22px;
+    margin-left: 10px;
 }
 
 .programs {
