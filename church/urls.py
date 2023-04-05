@@ -9,20 +9,12 @@ urlpatterns = [
     
     path('about/', views.about, name='about'),
     
-    path('sermons/', views.sermon_list, name='sermon_list'),
-    
-    path('<int:year>/<int:month>/<int:day>/<slug:sermon>/', views.sermon_detail, name='sermon_detail'),
-    
-    path('events/', views.EventList.as_view(), name='event_list'),
-    
-    path('<slug:slug>/', views.EventDetail.as_view(), name='event_detail'),
+    path('child_dedication/', views.child_dedication, name='child_dedication'),
     
     path('contact/', views.contact, name='contact'),
     
     path('baptism/', views.baptism, name='baptism'),
-    
-    path('child_dedication/', views.child_dedication, name='child_dedication'),
-    
+       
     path('getting_married/', views.getting_married, name='getting_married'),
     
     path('new_member/', views.new_member, name='new_member'),
@@ -31,6 +23,14 @@ urlpatterns = [
     
     path('testimony/', views.testimony, name='testimony'),
     
+    path('sermons/', views.sermon_list, name='sermon_list'),
+    
+    path('<int:year>/<int:month>/<int:day>/<slug:sermon>/', views.sermon_detail, name='sermon_detail'),
+    
+    path('events/', views.EventList.as_view(), name='event_list'),
+    
+    path('<slug:slug>/', views.EventDetail.as_view(), name='event_detail'),
+        
     path('careers/', views.careers, name='careers'),
     
     path('career_detail/', views.career_detail, name='career_detail'),

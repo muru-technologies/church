@@ -2,9 +2,76 @@
 {% load static %}
 
 {% block title %}
-Contact Us
+Testify
 {% endblock %}
 
 {% block content %}
+<style>
+    .form-control {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        font-size: 13px;
+        border-bottom: 1px solid #d3d3d3;
+        background: transparent;
+    }
+  </style>
+  
+  <!-- header image -->
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+      <div class="card-img header-img prayer-header"> </div>
+      <div class="card-img-overlay">
+        <h2 class="card-title header-text">Testify</h2>
+        <p class="m-4 mt-1"> 
+            And so you will bear testimony to me. - 
+          <span class="fst-italic"> Luke 21:13</span>
+      </p>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <h5 class="fw-meduim mt-4 text-center">
+            Lets Encourage Someone Today
+        </h5>        
+
+        <div class="row pt-4 justify-content-center gap-4">
+
+
+          <div class="col-10">
+            <h6 class="fw-medium mt-4 text-center mb-3">
+                Share your Testimony
+            </h6>
+            <form action="">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-5 col-md-6 col-10">
+                        <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 col-10">
+                        <input type="number" class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="col-lg-10 col-md-12 col-10">
+                        <input type="text" class="form-control mb-3" placeholder="Testimony Title" aria-label="Subject" aria-describedby="basic-addon1">
+                    </div>
+
+                    <div class="col-lg-10 col-md-12 col-10">
+                        <textarea class="form-control mb-3" name="Your Testimony" placeholder="Your Testimony" style="height: 100px;"></textarea>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-5 col-md-6 col-10">
+                        <button class="btn btn-danger btn-md fw-bold" type="submit">Testify</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+          
+        </div>
+
 
 {% endblock %}

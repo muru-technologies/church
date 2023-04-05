@@ -25,11 +25,11 @@
 
 
 body{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto';
 }
 
 .logo{
-    width: 150px;
+    width: 80px;
 }
 
 #topheader .navbar-nav li.active > a{
@@ -45,7 +45,7 @@ body{
 .nav-item:hover{
     color: #dc3545;
     transition: .5s;
-}
+}  
 
 .drop-links{
     color: #dc3545;
@@ -55,6 +55,9 @@ body{
     transition: .5s; 
 }
 
+.carousel-inner{
+    height: 100vh;
+}
 .group-img{
     width: 100px;
     height: 100px;
@@ -134,19 +137,18 @@ footer:before {
     padding-left: 10px;
 }
 
-/* About page */
-
+/** Headers **/
 .header-img{
     height: 40vh;
     width: 100%;
-    background-image: url(../assets/c2.png);
+    background-image: url(../assets/about.png);
     background-position:center bottom;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-.about-header::before {
+.header-sect::before {
     content: "";
     position: absolute;
     top: 0px;
@@ -162,13 +164,41 @@ footer:before {
     position: inherit;
     position: relative;
     margin-left: 25px;
-    margin-top: 100px;
+    margin-top: 80px;
+}
+
+.sermon-header{
+    background-image: url(../assets/sermon-header.jpeg);
+}
+
+.event-header{
+    background-image: url(../assets/event.png);
+}
+
+.dedicate-header{
+    background-image: url(../assets/child.jpeg);
+}
+
+.baptism-header{
+    background-image: url(../assets/baptism.jpg);
+}
+
+.married-header{
+    background-image: url(../assets/married.png);
+}
+
+.prayer-header{
+    background-image: url(../assets/prayer.jpeg);
+}
+
+.member-header{
+    background-image: url(../assets/member.png);
 }
 
 
 @media screen and (max-width: 1150px) {
     .header-text {
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
     .organogram{
@@ -187,8 +217,9 @@ footer:before {
 }
 
 
-.hist-item{
+/* About page */
 
+.hist-item{
     border-left: 2px solid rgba(5, 4, 82, 0.9);
 }
 
@@ -208,6 +239,8 @@ footer:before {
 .hist-dates{
     margin-top: -22px;
     margin-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .programs {

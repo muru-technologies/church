@@ -6,54 +6,79 @@ Dedicate your Child
 {% endblock %}
 
 {% block content %}
+
+<style>
+    .form-control {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        font-size: 13px;
+        border-bottom: 1px solid #d3d3d3;
+        background: transparent;
+    }
+</style>
  <!-- header image -->
 
- <div class="about-header position-relative">
-    <h1 class="header-text text-light top-50">Child Dedication</h1>
+ <div class="card bg-dark text-white header-sect rounded-0 border-0">
+    <div class="card-img header-img dedicate-header"> </div>
+    <div class="card-img-overlay">
+      <h2 class="card-title header-text">Child Dedication</h2>
+        <p class="m-4 mt-1"> 
+            Behold, children are a gift of the Lord,
+            The fruit of the womb is a reward. - <span class="fst-italic"> Psalm 127:3 </span>
+        </p>
+    </div>
   </div>
 
   <!-- header image end-->
   
   <div class="container-fluid">
 
-    <!-- Sermon detail -->
-    
-    <h6 class="fw-bold mt-4 text-center">
-    Dedicate your Child
-    </h6>
-
     <div class="row pt-4 justify-content-center">
 
       <div class="col-lg-5 col-md-5 col-12">
         <h4>Child Dedication Procedure</h4>
-        <ol>
+        <ol type='number'>
             <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur perferendis harum eaque earum, laudantium molestias autem ratione.
+                <h6>Plan a Parents' Meeting</h6>
+                <p>
+                    Through the church council, you can schedule a meeting with the pastor to discuss the dedication of your child. The pastor will explain the process and answer any questions you may have.
+                </p>
             </li>
-            <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur perferendis harum eaque earum, laudantium molestias autem ratione.
+
+            <li> 
+                <h6>Provide Parent Trainning</h6>
+                <p>
+                    Parental Trainning is arranged several days before the dedication date. This trainning is used to teach and explain
+                    the dedication service and reignforce a biblical vision for Christian parenting.
+                </p>
             </li>
-            <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur perferendis harum eaque earum, laudantium molestias autem ratione.
+            <li> 
+                <h6>Day of the Service - Affirmations</h6>
+                <p>
+                    The family will be invited to the fron of the church along wiwth their child where they will affirm their commitment to raise their child in the fear and admonition of the Lord.
+                </p>
             </li>
-            <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur perferendis harum eaque earum, laudantium molestias autem ratione.
-            </li>
-            <li>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur perferendis harum eaque earum, laudantium molestias autem ratione.
+
+            <li> 
+                <h6>Day of Service - Blessing Prayer</h6>
+                <p>
+                    After the parents have affirmed their commitment, the Bishop will pray for the child and the parents.
+                </p>
             </li>
         </ol>
       </div>
 
       <div class="col-lg-5 col-md-5 col-12">
-        <form>
-            <h4 class="fw-bold text-center">
-                Dedication Form
-            </h4>
 
-            <h3 class="fw-medium">
+        <form>
+            <h5 class="fw-bold text-center">
+                Dedication Form
+            </h5>
+
+            <h6 class="fw-medium">
                 Child Information
-            </h3>
+            </h6>
                        
             <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
 
@@ -63,9 +88,9 @@ Dedicate your Child
 
             <input type="text" class="form-control mb-3" placeholder="Date Of Dedication" aria-label="Full Name" aria-describedby="basic-addon1">
             
-            <h3 class="fw-medium">
+            <h6 class="fw-medium">
                 Parents' Information
-            </h3>
+            </h6>
                        
             <input type="text" class="form-control mb-3" placeholder="Mother's Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
 
@@ -76,7 +101,7 @@ Dedicate your Child
             <input type="text" class="form-control mb-3" placeholder="Father's Contact" aria-label="Full Name" aria-describedby="basic-addon1">
             
 
-            <button type="submit" class="btn btn-dark btn-outline-danger border-0 p-3 fw-bold">Request Dedication</button>
+            <button type="submit" class="btn btn-dark btn-outline-danger text-light border-0 fw-medium">Request Dedication</button>
           </form>
       </div>
 

@@ -2,70 +2,89 @@
 {% load static %}
 
 {% block title %}
-Contact Us
+Prayer Request
 {% endblock %}
 
 {% block content %}
+<style>
+  .form-control {
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      font-size: 13px;
+      border-bottom: 1px solid #d3d3d3;
+      background: transparent;
+  }
+</style>
+
 <!-- header image -->
 
-<div class="about-header position-relative">
-    <h1 class="header-text text-light top-50 start-50">Prayer Request</h1>
+  <div class="card bg-dark text-white header-sect rounded-0 border-0">
+    <div class="card-img header-img prayer-header"> </div>
+    <div class="card-img-overlay">
+      <h2 class="card-title header-text">Prayer Request</h2>
+      <p class="m-4 mt-1"> 
+        Let us then with confidence draw near to the throne of grace, that we may receive mercy and find grace to help in time of need - 
+        <span class="fst-italic"> Hebrews 4:16</span>
+    </p>
+    </div>
   </div>
 
   <!-- header image end-->
   
   <div class="container-fluid">
 
-    <h4 class="fw-bold mt-4 text-center">
+    <h5 class="fw-medium mt-4 text-center">
         Lets Pray With you
-    </h4>        
+    </h5>        
 
     <div class="row pt-4 justify-content-center gap-4">
 
       <div class="col-lg-4 col-md-5 col-12" style="text-align: justify;">
-        Just some Random text about Prayer Request.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed ut quisquam veniam blanditiis dignissimos natus pariatur cumque deleniti voluptates sint laborum, consequatur aliquam assumenda animi quis vitae officiis eveniet fugiat.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio excepturi modi qui magni voluptatem vero eius, dicta illum id eum numquam voluptate consequuntur doloremque velit animi et nihil molestias earum!
+        The purpose of prayer requests is to get more people involved in praying. 
+        Prayer is more powerful when lots of people are praying for the same things. 
+        It's also an excellent way of showing support other church members. 
+        Especially if you're all praying for someone in the church - it makes them feel loved and cared for.
       </div>
 
       <div class="col-lg-4 col-md-5 col-12 align-self-center">
         <figure class="text-center">
             <blockquote class="blockquote">
-              <p>Ask and you shall be given, Knock and the dorr shall be open</p>
+              <p>Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.</p>
             </blockquote>
             <figcaption class="blockquote-footer">
-              Just some Random Verse in the <cite title="Source Title">Bible</cite>
+              Matthew 7:7<cite title="Source Title">NIV</cite>
             </figcaption>
           </figure>
       </div>
 
       <div class="col-10">
-        <h4 class="fw-bold mt-4 text-center mb-3">
+        <h5 class="fw-medium mt-4 text-center mb-3">
             Prayer Request Form.
-        </h4>
+        </h5>
         <form action="">
 
             <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-6 col-10">
+                <div class="col-lg-5 col-md-5 col-10">
                     <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
                 </div>
 
-                <div class="col-lg-5 col-md-6 col-10">
+                <div class="col-lg-5 col-md-5 col-10">
                     <input type="number" class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
                 </div>
 
-                <div class="col-lg-10 col-md-12 col-10">
-                    <input type="text" class="form-control mb-3" placeholder="Subject" aria-label="Subject" aria-describedby="basic-addon1">
+                <div class="col-lg-10 col-md-10 col-10">
+                    <input type="text" class="form-control mb-3" placeholder="Request Title" aria-label="Subject" aria-describedby="basic-addon1">
                 </div>
 
-                <div class="col-lg-10 col-md-12 col-10">
-                    <textarea class="form-control mb-3" name="Your Message" placeholder="Your Message" style="height: 200px;"></textarea>
+                <div class="col-lg-10 col-md-10 col-10">
+                    <textarea class="form-control mb-3" name="prayer" placeholder="Your Request" style="height: 100px;"></textarea>
                 </div>
             </div>
 
             <div class="row justify-content-center text-center">
                 <div class="col-lg-5 col-md-6 col-10">
-                    <button class="btn btn-danger btn-md fw-bold" type="submit">Request</button>
+                    <button class="btn btn-danger btn-md btn-outline-dark border-0" type="submit">Submit Request</button>
                 </div>
             </div>
         </form>
