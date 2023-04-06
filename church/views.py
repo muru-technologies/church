@@ -179,8 +179,8 @@ def careers(request):
 def career_detail(request):
     return render(request, 'career_detail.html')
 
-def men(request):
-    return render(request, 'men.html')
+def kama(request):
+    return render(request, 'kama.html')
 
 def sunday_school(request):
     return render(request, 'sunday_school.html')

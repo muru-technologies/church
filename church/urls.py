@@ -21,8 +21,9 @@ urlpatterns = [
     
     path('new_member/', views.new_member, name='new_member'),
     
-        
     path('testimony/', views.testimony, name='testimony'),
+    
+    path('kama/', views.kama, name='kama'),
     
     path('sermons/', views.sermon_list, name='sermon_list'),
     
@@ -35,9 +36,7 @@ urlpatterns = [
     path('careers/', views.careers, name='careers'),
     
     path('career_detail/', views.career_detail, name='career_detail'),
-    
-    path('men/', views.men, name='men'),
-    
+        
     path('sunday_school/', views.sunday_school, name='sunday_school'),
     
     path('women/', views.women, name='women'),

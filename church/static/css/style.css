@@ -437,12 +437,8 @@ img {
 
 
 /** ministry Icon**/
-.ministry-icon-cont {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
-
 .ministry-icon {
-    padding-top: 25px;
+    border-top: 3px ;
+    width: 78px;
+    height: 78px;
 }

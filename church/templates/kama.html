@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Kenya Anglican Men Association
+{% endblock %}
+
+{% block content %}
+    <!-- header image -->
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+        <div class="card-img header-img member-header"> </div>
+        <div class="card-img-overlay">
+          <h2 class="card-title header-text">Kenya Anglican Men Association</h2>
+          <p class="m-4 mt-1"> 
+              And if you be unwilling to serve the Lord, choose this day whom you will serve, whether the Gods your fathers served... - 
+            <span class="fst-italic"> Joshua 24:15</span>
+        </p>
+        </div>
+      </div>
+  
+    <!-- header image end-->
+
+   
+        <img src="{% static './assets/men.png' %}" class="position-relative ministry-icon rounded-circle top-50 start-50 translate-middle" alt="kama">
+ 
+  
+  <div class="container-fluid">
+
+    <div class="mt-1 container">
+        
+       <div class="row mx-auto justify-content-center">
+        <div class="col-lg-6 col-md-6 col-12">
+            <p style="text-align: justify;">
+                KAMA was established to create a forum for men in the Anglican Church of Kenya to fellowship and serve Christ. 
+                It also prepares men to play their God given roles within family, the church and Country. <br><br>
+    
+                The Provincial KAMA in Kenya received recognition and blessing of the Provincial Synod in July 2001, by this time nearly all diocese had established KAMA.
+                 Before KAMA their existed the Father’s Union which was established in Diocese of Mt. Kenya South in 1985. 
+                 It is both a privilege and responsibility to be a KAMA member because it constantly reminds men of their faith in Jesus Christ.
+            </p>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12">
+            <img class="img-fluid" src="{% static './assets/men2.jpg' %}" alt="group-img">
+        </div>
+    </div>
+        
+        <h4 class="text-center">KAMA Objectives</h4>
+        <ul> 
+            <li>Promote Christian principles in community life. </li>
+            <li>To assist members to grow in spirit, mind and body natured in faith </li>
+            <li>Honour the institution of marriage as ordained by God to Promote family values </li>
+            <li>To promotes God's kingdom and set forth his glory. </li>
+            <li>Undertake act of Christian services for the distressed, differently abled and disadvantaged </li>
+            <li>To be good stewards of God's gifts </li>
+            <li>Use of resources in supporting the Work of the church at all levels </li>
+            <li> Encourage Anglican Men and women to play positive role as Christians socially, politically and economically</li>
+            <li>Play an active role in the mission of the church revival meetings </li>
+            <li>To promote Christian fellowship, love and unity in the church and society and among its members </li>
+        </ul>
+            
+    </div>
+{% endblock %}
