@@ -36,6 +36,17 @@ Dedicate your Child
 
     <div class="row pt-4 justify-content-center">
 
+        {% for message in messages %}
+          <div class="container-fluid p-2">
+            {% if message %}
+              <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+
       <div class="col-lg-5 col-md-5 col-12">
         <h4>Child Dedication Procedure</h4>
         <ol type='number'>
@@ -71,7 +82,8 @@ Dedicate your Child
 
       <div class="col-lg-5 col-md-5 col-12">
 
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <h5 class="fw-bold text-center">
                 Dedication Form
             </h5>
@@ -80,25 +92,56 @@ Dedicate your Child
                 Child Information
             </h6>
                        
-            <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+            <input type="text" required name="child_name" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
 
-            <input type="text" class="form-control mb-3" placeholder="Gender" aria-label="Full Name" aria-describedby="basic-addon1">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="Male" required name="child_gender" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Male
+                </label>
+            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Female" required name="child_gender" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Female
+                </label>
+            </div>
 
-            <input type="text" class="form-control mb-3" placeholder="Date Of Birth" aria-label="Full Name" aria-describedby="basic-addon1">
+            <div class="row  mt-1">
+                <div class="col-3 col-md-5">
+                    <label class="mt-2">
+                        Date of Birth
+                    </label>
+                </div>
 
-            <input type="text" class="form-control mb-3" placeholder="Date Of Dedication" aria-label="Full Name" aria-describedby="basic-addon1">
+                <div class="col-9 col-md-6">
+                    <input type="date" required name="child_date_of_birth" class="form-control mb-3" placeholder="Date Of Birth" aria-label="Date of Birth" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div class="row  mt-1">
+                <div class="col-3 col-md-5">
+                    <label class="mt-2">
+                        Date of Dedication
+                    </label>
+                </div>
+
+                <div class="col-9 col-md-6">
+                    <input type="date" required name="date_of_dedication" class="form-control mb-3" placeholder="Date Of Dedication" aria-label="Date Of Dedication" aria-describedby="basic-addon1">
+                </div>
+            </div>
             
             <h6 class="fw-medium">
                 Parents' Information
             </h6>
                        
-            <input type="text" class="form-control mb-3" placeholder="Mother's Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+            <input type="text" required name="mothers_name" class="form-control mb-3" placeholder="Mother's Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
 
-            <input type="number" class="form-control mb-3" placeholder="Mother's Contact" aria-label="Full Name" aria-describedby="basic-addon1">
+            <input type="number" required name="mothers_contact" class="form-control mb-3" placeholder="Mother's Contact" aria-label="Full Name" aria-describedby="basic-addon1">
 
-            <input type="text" class="form-control mb-3" placeholder="Father's Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+            <input type="text" required name="fathers_name" class="form-control mb-3" placeholder="Father's Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
 
-            <input type="text" class="form-control mb-3" placeholder="Father's Contact" aria-label="Full Name" aria-describedby="basic-addon1">
+            <input type="number" required name="fathers_contact" class="form-control mb-3" placeholder="Father's Contact" aria-label="Full Name" aria-describedby="basic-addon1">
             
 
             <button type="submit" class="btn btn-dark btn-outline-danger text-light border-0 fw-medium">Request Dedication</button>

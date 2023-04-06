@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+from django.contrib.messages import constants as messages
 
 from pathlib import Path
 from dotenv import load_dotenv
@@ -59,6 +60,9 @@ INSTALLED_APPS = [
     # Image cropping
     'easy_thumbnails',
     'image_cropping',
+    
+    # phone number
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
@@ -367,4 +371,13 @@ THUMBNAIL_PROCESSORS = (
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 IMAGE_CROPPING_SIZE_WARNING = True
+
+# messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 

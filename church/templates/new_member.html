@@ -41,7 +41,16 @@ New Member?
     </h4>        
 
     <div class="row pt-4 justify-content-center gap-1">
-
+      {% for message in messages %}
+        <div class="container-fluid p-2">
+          {% if message %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+              {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
 
       <div class="col-lg-4 col-md-5 col-12 align-self-center">
         <h5 class="fw-bold"> At the Reception</h5>
@@ -54,23 +63,23 @@ New Member?
         <h5 class="fw-medium mt-4 text-center mb-3">
             Lets know you better
         </h5>
-        <form action="">
-                
+        <form method="POST">
+              {% csrf_token %}
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6 col-10">
-                    <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+                    <input type="text" name="name" required class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
                 </div>
 
                 <div class="col-lg-5 col-md-6 col-10">
-                    <input type="number" class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
+                    <input type="number" name="phone_number" required class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
                 </div>
 
                 <div class="col-lg-10 col-md-12 col-10">
-                    <input type="text" class="form-control mb-3" placeholder="Current Church" aria-label="Subject" aria-describedby="basic-addon1">
+                    <input type="text" name="current_church" required class="form-control mb-3" placeholder="Current Church" aria-label="current church" aria-describedby="basic-addon1">
                 </div>
 
                 <div class="col-lg-10 col-md-12 col-10">
-                    <input type="text" class="form-control mb-3" placeholder="Area of Residence" aria-label="Subject" aria-describedby="basic-addon1">
+                    <input type="text" name="residential_area" required class="form-control mb-3" placeholder="Area of Residence" aria-label="Subject" aria-describedby="basic-addon1">
                 </div>
             </div>
 

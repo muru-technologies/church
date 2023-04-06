@@ -36,7 +36,18 @@ Prayer Request
 
     <h5 class="fw-medium mt-4 text-center">
         Lets Pray With you
-    </h5>        
+    </h5> 
+    
+    {% for message in messages %}
+      <div class="container-fluid p-2">
+        {% if message %}
+          <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+            {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
 
     <div class="row pt-4 justify-content-center gap-4">
 
@@ -62,23 +73,24 @@ Prayer Request
         <h5 class="fw-medium mt-4 text-center mb-3">
             Prayer Request Form.
         </h5>
-        <form action="">
+        <form method="POST">
+          {% csrf_token %}
 
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-5 col-10">
-                    <input type="text" class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+                    <input type="text" name="name" required class="form-control mb-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
                 </div>
 
                 <div class="col-lg-5 col-md-5 col-10">
-                    <input type="number" class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
+                    <input type="number" name="phone_number" required class="form-control mb-3" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
                 </div>
 
                 <div class="col-lg-10 col-md-10 col-10">
-                    <input type="text" class="form-control mb-3" placeholder="Request Title" aria-label="Subject" aria-describedby="basic-addon1">
+                    <input type="text" name="title" required class="form-control mb-3" placeholder="Request Title" aria-label="Subject" aria-describedby="basic-addon1">
                 </div>
 
                 <div class="col-lg-10 col-md-10 col-10">
-                    <textarea class="form-control mb-3" name="prayer" placeholder="Your Request" style="height: 100px;"></textarea>
+                    <textarea name="content" required class="form-control mb-3" name="prayer" placeholder="Your Request" style="height: 100px;"></textarea>
                 </div>
             </div>
 

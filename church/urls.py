@@ -11,6 +11,8 @@ urlpatterns = [
     
     path('child_dedication/', views.child_dedication, name='child_dedication'),
     
+    path('prayer_request/', views.prayer_request, name='prayer_request'),
+    
     path('contact/', views.contact, name='contact'),
     
     path('baptism/', views.baptism, name='baptism'),
@@ -19,8 +21,7 @@ urlpatterns = [
     
     path('new_member/', views.new_member, name='new_member'),
     
-    path('prayer_request/', views.prayer_request, name='prayer_request'),
-    
+        
     path('testimony/', views.testimony, name='testimony'),
     
     path('sermons/', views.sermon_list, name='sermon_list'),

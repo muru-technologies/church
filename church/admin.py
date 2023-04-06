@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Sermon, Event
-
+from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony
 from image_cropping import ImageCroppingMixin
 
 # Register your models here.
@@ -23,4 +22,38 @@ class EventAdmin(ImageCroppingMixin, admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'publish'
     ordering = ('status', 'publish')
+    
+@admin.register(ChildDedication)
+class ChildDedicationAdmin(admin.ModelAdmin):
+    list_display = ('child_name', 'child_date_of_birth', 'date_of_dedication', 
+                    'mothers_name', 'fathers_name', 'dedication_status', 'created')
+    list_filter = ('child_gender', 'dedication_status', 'created')
+    search_fields = ('child_name', 'mothers_name', 'fathers_name')
+    date_hierarchy = 'created'
+    ordering = ('created',)
+    
+
+@admin.register(PrayerRequest)
+class PrayerRequestAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone_number', 'title', 'content', 'prayer_status', 'created')
+    list_filter = ('prayer_status', 'created')
+    search_fields = ('name', 'title', 'content')
+    date_hierarchy = 'created'
+    ordering = ('created',)
+    
+@admin.register(NewBeleiver)
+class NewBeleiverAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone_number', 'residential_area', 'current_church', 'created')
+    search_fields = ('name', 'current_church')
+    date_hierarchy = 'created'
+    ordering = ('created',)
+    
+    
+@admin.register(Testimony)
+class TestimonyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone_number', 'title', 'created')
+    search_fields = ('name', 'content',)
+    date_hierarchy = 'created'
+    ordering = ('created',)
+    
         
