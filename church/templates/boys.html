@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Boys' Brigade
+{% endblock %}
+
+{% block content %}
+    <!-- header image -->
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+        <div class="card-img header-img member-header"> </div>
+        <div class="card-img-overlay">
+          <h2 class="card-title header-text">Kenya Anglican Youth Organization</h2>
+          <p class="m-4 mt-1"> 
+             B... sure and steadfast... - 
+            <span class="fst-italic"> Hebrews 6:19</span>
+        </p>
+        </div>
+      </div>
+  
+    <!-- header image end-->
+
+   
+        <img src="{% static './assets/boysbrigade.png' %}" class="position-relative ministry-icon rounded-circle top-50 start-50 translate-middle" alt="kama">
+ 
+  
+  <div class="container-fluid">
+
+    <div class="mt-1 container">
+        
+       <div class="row mx-auto justify-content-center">
+            <div class="col-lg-8 col-md-6 col-12">
+                <p style="text-align: justify;">
+                    The Boys' Brigade was founded on October 4th 1883 by William A, Smith in the North Woodside Mission Hall Glasgow. 
+                    The First Glasgow, the original Company was based in the North Woodside Mission Hall, later known as the Reith Halls 
+                    for over 90 years until 1972 when the building was sold. The Company then moved to Kelvin Stevenson Memorial Church where 
+                    they continue to meet on Friday evenings, the traditional parade night. The First Glasgow Boys' Brigade was the first of 
+                    all the voluntary uniformed youth organisations, represented in 60 countries worldwide.  <br>
+                    
+                    For the first year of the Company's formation it was the only one however shortly thereafter this new organisation for boys 
+                    began to spread and by 1886 the movement numbered 2,000 mostly in Scotland although centered around Glasgow, companies had been 
+                    formed from Ayr in the southwest to Inverness in the north. From then on the movement filtered southward to England soon reaching as 
+                    far south as London. In 1887 the BB had spread to all points in the British Isles crossing the English Channel to the Channel Isles where 
+                    the 1st Jersey was formed and then across the Irish Sea where the 1st Belfast was formed in 1888 and the 1st Dublin in 1890. The First overseas 
+                    company was formed in St. Louis, Missouri USA in 1887.
+                </p>
+            
+            
+                <h4 class="text-center">Boys' Brigade Objectives</h4>
+                <ul> 
+                    <li>To empower boys to remain pure</li>
+                    <li>To involve boys in physical exercises</li>
+                    <li>Empowering boys</li>
+                    <li>To socialize</li>
+                    <li>To assist boys to grow spiritually</li>
+                    <li>To empower boys to bear one another's burden</li>
+                    <li>To increase our growth in numbers</li>
+                    <li>To serve in the church</li>
+                    <li>To nurture talents</li>
+                    <li>To promote Anglicanism</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                {% include 'side_bar.html' %}
+            </div>
+        </div>
+            
+    </div>
+{% endblock %}

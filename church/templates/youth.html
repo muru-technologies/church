@@ -2,45 +2,59 @@
 {% load static %}
 
 {% block title %}
-Youth Ministry
+Kenya Anglican Youth Organization
 {% endblock %}
 
 {% block content %}
-<!-- header image end-->
+    <!-- header image -->
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+        <div class="card-img header-img member-header"> </div>
+        <div class="card-img-overlay">
+          <h2 class="card-title header-text">Kenya Anglican Youth Organization</h2>
+          <p class="m-4 mt-1"> 
+             Be strong in the Lord - 
+            <span class="fst-italic"> Ephesians 6:10</span>
+        </p>
+        </div>
+      </div>
+  
+    <!-- header image end-->
 
-<!-- header image -->
-
-<div class="about-header position-relative">
-    <h1 class="header-text text-light top-50">Youth Ministry</h1>
-  </div>
-
-  <!-- header image end-->
-
-    <div class="text-center ministry-icon-cont position-relative bg-light top-50 start-50 translate-middle">
-        <i class="fa-solid fa-people-group ministry-icon fa-2x text-danger"></i>
-    </div>
+   
+        <img src="{% static './assets/youth.png' %}" class="position-relative ministry-icon rounded-circle top-50 start-50 translate-middle" alt="kama">
+ 
   
   <div class="container-fluid">
 
-    <div class="mt-4 container">
+    <div class="mt-1 container">
         
+       <div class="row mx-auto justify-content-center">
+        <div class="col-lg-8 col-md-6 col-12">
+            <p style="text-align: justify;">
+                In 1962, the then Bishop of (the former) Mt. Kenya Diocese, the late Obadiah Kariuki, had a vision for young people. He established the Anglican Youth Organization (AYO) with the main aim of bringing the young people back to the mainstream of the Church of Christ.<br>
 
-        <p style="text-align: justify;">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate corporis dolor distinctio veniam aperiam, beatae dignissimos expedita maiores eos commodi rem quasi molestiae saepe perferendis. Odio ad officia dolorum mollitia.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi recusandae ratione ad enim dolorem, quaerat corrupti exercitationem accusantium temporibus, sapiente consequatur tempore, qui consectetur minima officiis earum doloribus neque possimus?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vitae quaerat aut ea minus dolorum! Sed soluta, voluptatem vero similique facere vel dignissimos. Accusamus harum impedit id, magni sed quis?Lorem ipsum dolor sit amet consectetur adipisicing elit. A est dignissimos enim expedita dolor earum fugiat, quasi harum laboriosam ut hic officiis impedit ab deserunt voluptatum, sequi aspernatur possimus esse!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo similique laudantium facilis consequatur fuga nemo, cumque harum, illum eaque dolores non impedit fugiat laborum iure vel suscipit odio modi ipsam?
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut sint ea quis in magnam corporis recusandae maiores odit tempora, beatae amet voluptatum. Dolores aliquid voluptatibus temporibus nisi repellendus enim quas.
-
-            <br>
-            <br>
-            
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius asperiores accusantium cupiditate soluta veniam, sunt dolores nemo suscipit nulla. Magnam amet consequuntur voluptatibus quos maiores doloribus quaerat voluptatum. Placeat, porro.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae reiciendis quos eveniet laudantium nemo eligendi sunt rem optio laborum asperiores aperiam dicta, non fuga commodi eum accusantium velit molestiae quaerat!
+                In 1964, the bishop launched the Diocesan Anglican Youth Organization at the St. Paul’s Mother Church, Kabete and he commissioned a Youth Committee to carry on the extension work in the Diocese. During the following Provincial Synod, all the other Bishops agreed to start AYO in their dioceses. The name was changed from AYO to KAYO so as to cover the whole country. 
             </p>
-        </p>
+        
+        
+            <h4 class="text-center">Kenya Anglican Youth Organization Objectives</h4>
+            <ul> 
+                <li>Bring the youth closer to the lord</li>
+                <li>Mentorship</li>
+                <li>Grow the youth Ministry</li>
+                <li>Training and capacity building programs</li>
+                <li>Involvle the youth in adding value to their own youth programs</li>
+                <li>Increase youth participation in Church activities</li>
+                <li>Help the youth remain rooted in God</li>
+                <li>Psycho-social support</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-12">
+            {% include 'side_bar.html' %}
+        </div>
+    </div>
             
     </div>
-
-
 {% endblock %}

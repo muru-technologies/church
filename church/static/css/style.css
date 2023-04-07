@@ -129,9 +129,15 @@ footer:before {
 
 .foot-link{
     color: white;
+    
 }
 
-.foot-link:hover{
+.side-link{
+    color: black;
+    font-weight: bold;
+}
+
+.foot-link:hover, .side-link:hover{
     color: #dc3545;
     transition: .5s;
     padding-left: 10px;

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Church Choir
+{% endblock %}
+
+{% block content %}
+    <!-- header image -->
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+        <div class="card-img header-img member-header"> </div>
+        <div class="card-img-overlay">
+          <h2 class="card-title header-text">Church Choir</h2>
+          <p class="m-4 mt-1"> 
+            Let everything that has breath praise the LORD. Praise the LORD - 
+            <span class="fst-italic"> Psalms 150:6 </span>
+        </p>
+        </div>
+      </div>
+  
+    <!-- header image end-->
+
+   
+        <img src="{% static './assets/choir.png' %}" class="position-relative ministry-icon rounded-circle top-50 start-50 translate-middle" alt="kama">
+ 
+  
+  <div class="container-fluid">
+
+    <div class="mt-1 container">
+        
+        <div class="row mx-auto justify-content-center">
+            
+            <div class="col-lg-8 col-md-6 col-12">
+                <h4 class="text-center">Church Choir Objectives</h4>
+                <ul> 
+                    <li>Spread the Kingdom of God Through Musical Outreach</li>
+                    <li>Enhance capacity of choir to perform better and bless more and raising musical standards higher</li>
+                    <li>Improver on presentation and appearance.</li>
+                    <li>reach out to congregants</li>
+                    <li>additional innovative fundraising eforts</li>
+                    <li>widen and enhance music performance and experience</li>
+                    <li>Grow membership of church choir with emphasis on youth</li>
+
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                {% include 'side_bar.html' %}
+            </div>
+        </div>
+            
+    </div>
+{% endblock %}

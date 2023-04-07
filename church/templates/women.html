@@ -2,42 +2,65 @@
 {% load static %}
 
 {% block title %}
-Women Ministry
+Mother's Union & CWF
 {% endblock %}
 
 {% block content %}
     <!-- header image -->
-
-    <div class="about-header position-relative">
-        <h1 class="header-text text-light top-50">Women's Ministry</h1>
-    </div>
-
-      <!-- header image end-->
-
-        <div class="text-center ministry-icon-cont position-relative bg-light top-50 start-50 translate-middle">
-            <i class="fa-solid fa-person-dress fa-2x ministry-icon text-danger"></i>
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+        <div class="card-img header-img member-header"> </div>
+        <div class="card-img-overlay">
+          <h2 class="card-title header-text">Mother's Union & CWF </h2>
+          <p class="m-4 mt-1"> 
+             I can do all this through Christ who strengthens me - 
+            <span class="fst-italic"> Philipians 4:13</span>
+        </p>
         </div>
-      
-    <div class="container-fluid">
+      </div>
+  
+    <!-- header image end-->
 
-        <div class="mt-4 container">
-            
+   
+        <img src="{% static './assets/mothersunion.png' %}" class="position-relative ministry-icon rounded-circle top-50 start-50 translate-middle" alt="kama">
+ 
+  
+  <div class="container-fluid">
 
-            <p style="text-align: justify;">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate corporis dolor distinctio veniam aperiam, beatae dignissimos expedita maiores eos commodi rem quasi molestiae saepe perferendis. Odio ad officia dolorum mollitia.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi recusandae ratione ad enim dolorem, quaerat corrupti exercitationem accusantium temporibus, sapiente consequatur tempore, qui consectetur minima officiis earum doloribus neque possimus?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit vitae quaerat aut ea minus dolorum! Sed soluta, voluptatem vero similique facere vel dignissimos. Accusamus harum impedit id, magni sed quis?Lorem ipsum dolor sit amet consectetur adipisicing elit. A est dignissimos enim expedita dolor earum fugiat, quasi harum laboriosam ut hic officiis impedit ab deserunt voluptatum, sequi aspernatur possimus esse!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo similique laudantium facilis consequatur fuga nemo, cumque harum, illum eaque dolores non impedit fugiat laborum iure vel suscipit odio modi ipsam?
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut sint ea quis in magnam corporis recusandae maiores odit tempora, beatae amet voluptatum. Dolores aliquid voluptatibus temporibus nisi repellendus enim quas.
-
-                <br>
-                <br>
-                
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius asperiores accusantium cupiditate soluta veniam, sunt dolores nemo suscipit nulla. Magnam amet consequuntur voluptatibus quos maiores doloribus quaerat voluptatum. Placeat, porro.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae reiciendis quos eveniet laudantium nemo eligendi sunt rem optio laborum asperiores aperiam dicta, non fuga commodi eum accusantium velit molestiae quaerat!
-                </p>
-            </p>
-                
-        </div>
+    <div class="mt-1 container">
         
+       <div class="row mx-auto justify-content-center">
+            <div class="col-lg-8 col-md-6 col-12">
+                <p style="text-align: justify;">
+                    The Mother’s Union is the oganization that brings together women of the Anglican denomination from around the world. 
+                    Mother’s Union focuses on entrenching and nurturing Christian Care for Families. <br>
+
+                    The Mother's Union was founded in 1876 by Mary Sumner, a member of Church of England parish of Old Alresford, 
+                    near Winchester. Her inspiration to start the movement came after the birth of her first grandchild, 
+                    she remebered her motherhood challenges and wanted to pool together mothers of all social classes to provide 
+                    support for one another and to be trained in motherhood. In Kenya, the movement started in 1918 by settler women. <br>
+                </p>
+
+            
+                <h4 class="text-center">Mother's Union & CWF Objectives</h4>
+                <ul> 
+                    <li>Manage the transitions from lower levels to mothering in the church </li>
+                    <li>play a motherly role to the youth in the church through inculcation of Christian values and teachings and offering a shoulder to cry on </li>
+                    <li>Assist mothers in surmounting life challenges that are part of everyday living</li>
+                    <li>Mentor the youth in our church to grow Christ-like</li>
+                    <li>To uphold MU constitution and its objectives </li>
+                    <li>To encourage parents to bring up their children in their Anglican faith</li>
+                    <li>To maintain a worldwide fellowship united in prayer worship and services</li>
+                    <li>To evangelize to none MU members in our society</li>
+                    <li>To help those whose lives have been met with adversity </li>
+                    <li>To create ways and means of uplifiting the standard of christian women </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                {% include 'side_bar.html' %}
+            </div>
+        </div>
+                
+    </div>
 {% endblock %}

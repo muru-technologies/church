@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Girls' Friendly Society
+{% endblock %}
+
+{% block content %}
+    <!-- header image -->
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+        <div class="card-img header-img member-header"> </div>
+        <div class="card-img-overlay">
+          <h2 class="card-title header-text">Girls' Friendly Society</h2>
+          <p class="m-4 mt-1"> 
+             Bear each others' burdens, and in this way, you will fullfill the law of Christ- 
+            <span class="fst-italic"> Galatians 6:2</span>
+        </p>
+        </div>
+      </div>
+  
+    <!-- header image end-->
+
+   
+        <img src="{% static './assets/girlscout.png' %}" class="position-relative ministry-icon rounded-circle top-50 start-50 translate-middle" alt="kama">
+ 
+  
+  <div class="container-fluid">
+
+    <div class="mt-1 container">
+        
+        <div class="row mx-auto justify-content-center">
+            <div class="col-lg-8 col-md-6 col-12">
+                <p style="text-align: justify;">
+                    GFS was founded in England in 1875, initially for young women, but the founder Mrs Mary Elizabeth Townsend believed that from the very earliest days that young girls from eight years should be included. This would give them the Christian influence of GFS in their lives from an early age. <br>
+
+                    GFS empowers girls and young women aged 5 to 25 and supports them through the difficult transition from childhood and adolescence to young adulthood by providing opportunities for enjoyment and developing confidence, self-esteem, emotional wellbeing and resilience to enable them to fulfil their potential and live as independent women.
+                </p>
+
+            
+                <h4 class="text-center">Girls' Friendly Society Objectives</h4>
+                <ul> 
+                    <li>To empower girls to remain pure until marriage</li>
+                    <li>To involve girls in physical exercises and offering a shoulder to cry on</li>
+                    <li>Empowering girls in cookery activities</li>
+                    <li>To socialize</li>
+                    <li>To assist girls to spiritual growth</li>
+                    <li>To empower girls bear one anothers burden</li>
+                    <li>To increase our growth in numbers</li>
+                    <li>To serve in the church</li>
+                    <li>To nurture talents</li>
+                    <li>To promote Anglicanism</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                {% include 'side_bar.html' %}
+            </div>
+        </div>
+            
+    </div>
+{% endblock %}

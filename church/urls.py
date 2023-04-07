@@ -39,6 +39,20 @@ urlpatterns = [
     
     path('kama/', views.kama, name='kama'),
     
+    path('mothers-union/', views.women, name='women'),
+    
+    path('kayo/', views.youth, name='youth'),
+    
+    path('boys-brigade/', views.boys, name='boys'),
+    
+    path('children/', views.children, name='children'),
+    
+    path('girls-friendly-society/', views.girls, name='girls'),
+    
+    path('praise-and-adoration/', views.praise, name='praise'),
+    
+    path('choir/', views.choir, name='choir'),
+    
     path('sermons/', views.sermon_list, name='sermon_list'),
     
     path('<int:year>/<int:month>/<int:day>/<slug:sermon>/', views.sermon_detail, name='sermon_detail'),
@@ -49,13 +63,7 @@ urlpatterns = [
         
     path('careers/', views.careers, name='careers'),
     
-    path('career_detail/', views.career_detail, name='career_detail'),
-        
-    path('sunday_school/', views.sunday_school, name='sunday_school'),
-    
-    path('women/', views.women, name='women'),
-    
-    path('youth/', views.youth, name='youth'),
+    path('career_detail/', views.career_detail, name='career_detail'),   
     
     path('give/', views.give, name='give'),
     

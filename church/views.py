@@ -306,14 +306,26 @@ def career_detail(request):
 def kama(request):
     return render(request, 'kama.html')
 
-def sunday_school(request):
-    return render(request, 'sunday_school.html')
-
 def women(request):
     return render(request, 'women.html')
 
 def youth(request):
     return render(request, 'youth.html')
+
+def boys(request):
+    return render(request, 'boys.html')
+
+def girls(request):
+    return render(request, 'girls.html')
+
+def children(request):
+    return render(request, 'children.html')
+
+def praise(request):
+    return render(request, 'praise.html')
+
+def choir(request):
+    return render(request, 'choir.html')
 
 def give(request):
     return render(request, 'give.html')

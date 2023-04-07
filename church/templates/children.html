@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Children Ministry
+{% endblock %}
+
+{% block content %}
+    <!-- header image -->
+  
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+        <div class="card-img header-img member-header"> </div>
+        <div class="card-img-overlay">
+          <h2 class="card-title header-text">Children Ministry</h2>
+          <p class="m-4 mt-1"> 
+             ... let the little children come to me. and do not hinder them ...- 
+            <span class="fst-italic"> Mathew 19:14</span>
+        </p>
+        </div>
+      </div>
+  
+    <!-- header image end-->
+
+   
+        <img src="{% static './assets/children.png' %}" class="position-relative ministry-icon rounded-circle top-50 start-50 translate-middle" alt="kama">
+ 
+  
+  <div class="container-fluid">
+
+    <div class="mt-1 container">
+        
+        <div class="row mx-auto justify-content-center">
+            <div class="col-lg-8 col-md-6 col-12">
+                <p style="text-align: justify;">
+                    The aim of the children ministry is leading children into a living relationship with Jesus Christ. 
+                    The ministry focuses on entrenching firm Christian foundation through teaching, mentor-ship and capacity building 
+                    and enabling them to grow in faith and live life in its fullness. <br>
+
+                    Effective children ministry will be achieved through development of appropriate curriculum, identification of necessary 
+                    infrastructure and commitment of financial resources with special emphasis on staffing and capacity building of ministry workers. <br>
+
+                    The ministry consists of children, teens, GFS and Boys Brigade.<br>
+                </p>          
+            
+                <h4 class="text-center">Children Ministry Objectives</h4>
+                <ul> 
+                    <li>Reach out to more children especially those who do not attend church</li>
+                    <li>Income generating projects specific for sunday school</li>
+                    <li>Increasing the number of sunday school teachers</li>
+                    <li>Training and capacity building programs</li>
+                    <li>Involve the children in adding value to their programs</li>
+                    <li>Help the children participate in church activities</li>
+                    <li>Help the children to remain rooted in God</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                {% include 'side_bar.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
