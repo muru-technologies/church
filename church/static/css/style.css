@@ -201,6 +201,10 @@ footer:before {
     background-image: url(../assets/member.png);
 }
 
+.careers-header{
+    background-image: url(../assets/careers.jpg);
+}
+
 
 @media screen and (max-width: 1150px) {
     .header-text {

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony
+from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony, Career
 from image_cropping import ImageCroppingMixin
 
 # Register your models here.
@@ -55,5 +55,15 @@ class TestimonyAdmin(admin.ModelAdmin):
     search_fields = ('name', 'content',)
     date_hierarchy = 'created'
     ordering = ('created',)
+    
+
+@admin.register(Career)
+class CareerAdmin(admin.ModelAdmin):
+    list_display = ('title', 'status','deadline', 'publish')
+    list_filter = ('status', 'created', 'publish', 'deadline')
+    search_fields = ('title', 'content')
+    prepopulated_fields = {'slug': ('title',)}
+    date_hierarchy = 'publish'
+    ordering = ('status', 'publish')
     
         

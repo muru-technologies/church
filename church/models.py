@@ -141,3 +141,24 @@ class NewBeleiver(models.Model):
     def __str__(self):
         return self.name
     
+
+class Career(models.Model):
+    STATUS_CHOICES = (
+        ('draft', 'draft'),
+        ('publish', 'publish')
+    )
+    title = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique_for_date='publish')
+    content = RichTextUploadingField()
+    created = models.DateTimeField(auto_now_add=True)
+    deadline = models.DateTimeField(auto_now_add=True)
+    publish = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+
+    class Meta:
+        ordering = ('-publish',)
+
+
+    def __str__(self):
+        return self.title
+    

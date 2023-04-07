@@ -112,7 +112,7 @@
                                       <a href="contact.html" class="text-decoration-none drop-links"> Contacts</a>
                                     </li>
                                     <li class="pb-1">
-                                      <a href="careers.html" class="text-decoration-none drop-links"> Careers</a>
+                                      <a href="{% url 'church:careers' %}" class="text-decoration-none drop-links"> Careers</a>
                                     </li>
                                   </ul>
                               </div>
@@ -250,6 +250,7 @@
                   <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:sermon_list' %}" class="text-decoration-none foot-link">Sermons</a></li>
                   <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:event_list' %}" class="text-decoration-none foot-link">Events</a></li>
                   <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:contact' %}" class="text-decoration-none foot-link">Contact Us</a></li>
+                  <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:careers' %}" class="text-decoration-none foot-link">Careers</a></li>
                 </ul>
                 
               </div>

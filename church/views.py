@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.utils import timezone
 from django.core.mail import send_mail
 
-from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony
+from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony, Career
 from .forms import EmailForm
 
 from mailchimp_marketing import Client
@@ -297,11 +297,16 @@ def testimony(request):
     else:
         return render(request, 'testimony.html')
 
-def careers(request):
-    return render(request, 'careers.html')
 
-def career_detail(request):
-    return render(request, 'career_detail.html')
+class CareerList(ListView):
+    queryset = Career.objects.filter(status='publish').order_by('-publish')
+    template_name = 'careers.html'
+    paginate_by = 6
+    
+    
+class CareerDetail(DetailView):
+    model = Career
+    template_name = 'career_detail.html'
 
 def kama(request):
     return render(request, 'kama.html')
