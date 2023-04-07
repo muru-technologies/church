@@ -4,8 +4,22 @@ from . import views
 app_name = 'church'
 
 urlpatterns = [
+    # ping mailchimp
+    path('ping/', views.mailchimp_ping_view, name='ping'),
     
     path('', views.index, name='index'),
+    
+    path('subscribe', views.subscribe_view, name='subscribe'),
+
+    path('success/', views.subscribe_success_view, name='subscribe_success'),
+
+    path('fail/', views.subscribe_fail_view, name='subscribe_fail'),
+
+    path('unsubscribe/', views.unsubscribe_view, name='unsubscribe'),
+
+    path('unsubscribe/success/', views.unsubscribe_success_view, name='unsubscribe_success'),
+
+    path('unsubscribe/fail/', views.unsubscribe_fail_view, name='unsubscribe_fail'),
     
     path('about/', views.about, name='about'),
     

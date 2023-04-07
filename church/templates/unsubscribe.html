@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+   <div class="container mt-5 pt-5 mb-5 pb-5">
+       <h1 class="fw-bold">Unsubscribe</h1>
+       <p>Enter your email address to unsubscribe from our mailing list.</p>
+       <form method="POST">
+           {% csrf_token %}
+           {{ form.as_p }}
+           <button type="submit" class="btn btn-danger fw-bold btn-outline-dark">Unsubscribe</button>
+       </form>
+       <p class="mt-2"><a href="{% url 'church:subscribe' %}">Subscribe Here</a></p>
+   </div>
+{% endblock %}

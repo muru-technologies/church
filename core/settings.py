@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     
     # phone number
     "phonenumber_field",
+    
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'church.context_processor.subscribe_form',
             ],
         },
     },
@@ -381,3 +383,15 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+# sending emails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST =  os.environ.get('EMAIL_HOST')
+EMAIL_PORT = '993'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+
+# email newsletter
+MAILCHIMP_API_KEY = os.getenv('MAILCHIMP_API_KEY')
+MAILCHIMP_REGION = os.getenv('MAILCHIMP_REGION')
+MAILCHIMP_MARKETING_AUDIENCE_ID = os.getenv('MAILCHIMP_MARKETING_AUDIENCE_ID')

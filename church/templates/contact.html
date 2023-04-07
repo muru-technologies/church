@@ -8,16 +8,30 @@ Contact Us
 {% block content %}
 
 <!-- header image -->
-
-<div class="about-header position-relative">
-    <h1 class="header-text text-light top-50">Contact Us</h1>
+  
+<div class="card bg-dark text-white header-sect rounded-0 border-0">
+    <div class="card-img header-img"> </div>
+    <div class="card-img-overlay">
+      <h2 class="card-title header-text">Contact Us</h2>
+    </div>
   </div>
 
-  <!-- header image end-->
+<!-- header image end-->
   
   <div class="container-fluid">
 
     <div class="row justify-content-center mt-5">
+        {% for message in messages %}
+        <div class="container-fluid p-2">
+          {% if message %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+              {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+
         <h1 class="text-center mb-5"> Have any Questions? <br> Feel Free to Contact Us</h1>
         <div class="col-lg-4 col-md-4 col-8 align-self-center fs-5">
             
@@ -58,23 +72,23 @@ Contact Us
         </div>
 
         <div class="col-lg-5 col-md-5 col-8">
-            <form action="">
-
+            <form method="POST">
+                {% csrf_token %}
                 <div class="row justify-content-center">
                     <div class="col-10">
-                        <input type="text" class="form-control mb-3 rounded-pill p-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
+                        <input type="text" name="name" class="form-control mb-3 rounded-pill p-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="col-10">
-                        <input type="email" class="form-control mb-3 rounded-pill p-3" placeholder="Email Address" aria-label="Phone Number" aria-describedby="basic-addon1">
+                        <input type="email" name="email" class="form-control mb-3 rounded-pill p-3" placeholder="Email Address" aria-label="Phone Number" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="col-10">
-                        <input type="text" class="form-control mb-3 rounded-pill p-3" placeholder="Subject" aria-label="Subject" aria-describedby="basic-addon1">
+                        <input type="text" name="subject" class="form-control mb-3 rounded-pill p-3" placeholder="Subject" aria-label="Subject" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="col-10">
-                        <textarea class="form-control mb-3 rounded-5" name="Your Testimony" placeholder="Your Message" style="height: 200px;"></textarea>
+                        <textarea name="message" class="form-control mb-3 rounded-5" name="Your Testimony" placeholder="Your Message" style="height: 200px;"></textarea>
                     </div>
                 </div>
 
