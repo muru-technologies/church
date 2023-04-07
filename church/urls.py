@@ -57,13 +57,18 @@ urlpatterns = [
     
     path('<int:year>/<int:month>/<int:day>/<slug:sermon>/', views.sermon_detail, name='sermon_detail'),
     
-    path('careers/', views.CareerList.as_view(), name='careers'),
+    path('careers/', views.career_list, name='careers'),
     
-    path('<slug:slug>/', views.CareerDetail.as_view(), name='career_detail'),   
-    
+    path('<int:year>/<int:month>/<int:day>/<slug:career>/', views.career_detail, name='career_detail'),
+        
     path('events/', views.EventList.as_view(), name='event_list'),
     
     path('<slug:slug>/', views.EventDetail.as_view(), name='event_detail'),
+    
+    
+    # path('careers/', views.CareerList.as_view(), name='careers'),
+    
+    # path('<slug:slug>/', views.CareerDetail.as_view(), name='career_detail'),
             
     path('give/', views.give, name='give'),
     

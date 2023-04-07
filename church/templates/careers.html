@@ -22,7 +22,7 @@ Careers
 
     <div class="row justify-content-center container mx-auto pt-4 mt-5">
 
-        {% for career in career_list %}
+        {% for career in careers %}
 
             <div class="col-lg-5 col-md-6 col-8 pb-3">
                 <a href="{% url 'church:career_detail' career.slug %}" class="text-decoration-none drop-links">
@@ -31,7 +31,7 @@ Careers
                 <p><span class="fw-bold">Deadline </span> | {{ career.deadline | date}}</p>
             </div>
         {% empty %}
-            <h5 class="text-center"> There no Open vancies at the moment</h5>
+            <h5 class="text-center"> There no Open vacancies at the moment</h5>
         {% endfor %}
     </div>
 {% endblock %}

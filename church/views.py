@@ -151,6 +151,25 @@ def sermon_detail(request, year, month, day, sermon):
                   {'sermon': sermon})
     
 
+def career_list(request):
+    careers = Career.objects.filter(status='publish').order_by('-publish')
+
+    return render(request, 
+                  'careers.html', 
+                  {'careers ': careers })
+    
+
+def career_detail(request, year, month, day, career):
+    career = get_object_or_404(Career, slug=career,
+                               status='publish',
+                               publish__year=year,
+                               publish__month=month,
+                               publish__day=day)
+    return render(request, 
+                  'career_detail.html',
+                  {'career': career})
+
+
 class EventList(ListView):
     queryset = Event.objects.filter(status='publish').order_by('-publish')
     template_name = 'events.html'
@@ -298,15 +317,15 @@ def testimony(request):
         return render(request, 'testimony.html')
 
 
-class CareerList(ListView):
-    queryset = Career.objects.filter(status='publish').order_by('-publish')
-    template_name = 'careers.html'
-    paginate_by = 6
+# class CareerList(ListView):
+#     queryset = Career.objects.filter(status='publish').order_by('-publish')
+#     template_name = 'careers.html'
+#     paginate_by = 6
     
     
-class CareerDetail(DetailView):
-    model = Career
-    template_name = 'career_detail.html'
+# class CareerDetail(DetailView):
+#     model = Career
+#     template_name = 'career_detail.html'
 
 def kama(request):
     return render(request, 'kama.html')
