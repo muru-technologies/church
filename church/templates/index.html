@@ -9,16 +9,16 @@ ACK St. Peters
 
 {% block content %}
 <!-- Carousel Cont -->
-  <div id="carouselExampleAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="{% static './assets/welcome.png' %}" class="d-block w-100 h-100" alt="...">
+        <img src="{% static './assets/welcome.png' %}" class="d-block w-100 h-100" alt="c1">
       </div>
       <div class="carousel-item">
-        <img src="{% static './assets/church1.png' %}" class="d-block w-100 h-100" alt="...">
+        <img src="{% static './assets/church1.png' %}" class="d-block w-100 h-100" alt="c2">
       </div>
       <div class="carousel-item">
-        <img src="{% static './assets/church2.png' %}" class="d-block w-100 h-100" alt="...">
+        <img src="{% static './assets/church2.png' %}" class="d-block w-100 h-100" alt="c3">
       </div>
     </div>
 
@@ -34,11 +34,11 @@ ACK St. Peters
 
   </div>
 
-  <!-- Carousel Cont -->
+<!-- Carousel Cont -->
   
   <div class="container-fluid">
 
-    <!-- Some Info Cont -->
+    {% comment %} <!-- Some Info Cont -->
     <div>
       <div class="row mt-5 mx-auto justify-content-center">
         
@@ -83,7 +83,7 @@ ACK St. Peters
         
       </div>
 
-    <!-- Some Info -->
+    <!-- Some Info --> {% endcomment %}
 
     <!-- Pastoral Team -->
 

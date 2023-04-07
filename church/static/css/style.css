@@ -56,7 +56,7 @@ body{
 }
 
 .carousel-inner{
-    height: 100vh;
+    height: 100%;
 }
 .group-img{
     width: 100px;
