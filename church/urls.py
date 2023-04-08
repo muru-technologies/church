@@ -60,6 +60,12 @@ urlpatterns = [
     path('careers/', views.career_list, name='careers'),
     
     path('<int:year>/<int:month>/<int:day>/<slug:career>/', views.career_detail, name='career_detail'),
+    
+    path('give/', views.give, name='give'),
+    
+    path('card/', views.card, name='card'),
+    
+    path('mpesa/', views.mpesa, name='mpesa'),
         
     path('events/', views.EventList.as_view(), name='event_list'),
     
@@ -70,10 +76,4 @@ urlpatterns = [
     
     # path('<slug:slug>/', views.CareerDetail.as_view(), name='career_detail'),
             
-    path('give/', views.give, name='give'),
-    
-    path('card/', views.card, name='card'),
-    
-    path('mpesa/', views.mpesa, name='mpesa'),
-    
 ]
