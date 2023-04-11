@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 import os
 
 from easy_thumbnails.conf import Settings as thumbnail_settings
+import braintree
 
 load_dotenv()
 
@@ -32,7 +33,7 @@ SECRET_KEY = os.environ.get("secret_key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -395,3 +396,23 @@ EMAIL_USE_TLS = True
 MAILCHIMP_API_KEY = os.getenv('MAILCHIMP_API_KEY')
 MAILCHIMP_REGION = os.getenv('MAILCHIMP_REGION')
 MAILCHIMP_MARKETING_AUDIENCE_ID = os.getenv('MAILCHIMP_MARKETING_AUDIENCE_ID')
+
+
+# Braintree settings
+BRAINTREE_MERCHANT_ID = os.getenv('BRAINTREE_MERCHANT_ID')
+BRAINTREE_PUBLIC_KEY = os.getenv('BRAINTREE_PUBLIC_KEY')
+BRAINTREE_PRIVATE_KEY = os.getenv('BRAINTREE_PRIVATE_KEY')
+# Merchant ID
+# Public Key
+# Private key
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
+
+# mpesa credentials 
+
+consumer_key = os.getenv('consumer_key')
+consumer_secret = os.getenv('consumer_secret')

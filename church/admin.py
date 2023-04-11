@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony, Career
+from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony, Career, MpesaPayment, CardPayment
 from image_cropping import ImageCroppingMixin
 
 # Register your models here.
@@ -66,4 +66,21 @@ class CareerAdmin(admin.ModelAdmin):
     date_hierarchy = 'publish'
     ordering = ('status', 'publish')
     
+    
+@admin.register(MpesaPayment)
+class MpesaPaymentAdmin(admin.ModelAdmin):
+    list_display = ('phone_number', 'amount', 'status', 'created_at')
+    search_fields = ('phone_number', )
+    date_hierarchy = 'created_at'
+    ordering = ('created_at',)
+    
+    
+@admin.register(CardPayment)
+class CardPaymentAdmin(admin.ModelAdmin):
+    list_display = ('braintree_id', 'holder_name', 'phone_number', 'amount', 'status', 'purpose', 'created_at')
+    search_fields = ('phone_number', )
+    date_hierarchy = 'created_at'
+    ordering = ('created_at',)
+    
+
         

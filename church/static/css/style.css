@@ -205,6 +205,9 @@ footer:before {
     background-image: url(../assets/careers.jpg);
 }
 
+.give-header{
+    background-image: url(../assets/donate.webp);
+}
 
 @media screen and (max-width: 1150px) {
     .header-text {

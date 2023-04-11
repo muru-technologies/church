@@ -167,4 +167,74 @@ class Career(models.Model):
                                                        self.publish.month,
                                                        self.publish.day,
                                                        self.slug])
+
+
+class BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        abstract = True
+        
+        
+# M-pesa Payment models
+class MpesaCalls(BaseModel):
+    ip_address = models.TextField()
+    caller = models.TextField()
+    conversation_id = models.TextField()
+    content = models.TextField()
+    class Meta:
+        verbose_name = 'Mpesa Call'
+        verbose_name_plural = 'Mpesa Calls'
+        
+        
+class MpesaCallBacks(BaseModel):
+    ip_address = models.TextField()
+    caller = models.TextField()
+    conversation_id = models.TextField()
+    content = models.TextField()
     
+    
+    class Meta:
+        verbose_name = 'Mpesa Call Back'
+        verbose_name_plural = 'Mpesa Call Backs'
+        
+        
+class MpesaPayment(BaseModel):
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    phone_number = models.TextField()
+    status = models.TextField()
+    
+    class Meta:
+        ordering = ('-created_at',)
+        
+        
+    class Meta:
+        verbose_name = 'Mpesa Payment'
+        verbose_name_plural = 'Mpesa Payments'
+        
+        
+    def __str__(self):
+        return self.phone_number
+    
+    
+class CardPayment(BaseModel):
+    braintree_id = models.CharField(max_length=200)
+    holder_name = models.CharField(max_length=200)
+    phone_number = PhoneNumberField()
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    purpose = models.CharField(max_length=200)
+    status = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    
+    class Meta:
+        ordering = ('-created_at',)
+        
+        
+    class Meta:
+        verbose_name = 'Card Payment'
+        verbose_name_plural = 'Card Payments'
+        
+        
+    def __str__(self):
+        return self.holder_name

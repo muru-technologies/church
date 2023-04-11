@@ -2,15 +2,22 @@
 {% load static %}
 
 {% block title %}
-Contact Us
+Give
 {% endblock %}
 
 {% block content %}
 <!-- header image -->
 
-<div class="about-header position-relative">
-    <h1 class="header-text text-light top-50">Give</h1>
-  </div>
+    <div class="card bg-dark text-white header-sect rounded-0 border-0">
+      <div class="card-img header-img give-header"> </div>
+      <div class="card-img-overlay">
+        <h2 class="card-title header-text">Give</h2>
+        <p class="m-4 mt-1"> 
+          Good will come to those who are generous and lend freely ... - 
+          <span class="fst-italic"> Psalm 112:5</span>
+      </p>
+      </div>
+    </div>
 
   <!-- header image end-->
   
@@ -21,18 +28,18 @@ Contact Us
         <div class="p-5 payment-method  col-lg-6 col-md-10 col-12 row justify-content-center">
           <h2 class="fw-bold text-center pb-5">Choose Payment Method</h2>
 
-        <div class="form-check col-lg-6 col-md-6 col-6" onclick="document.location.href='mpesa.html'" style="cursor: pointer;">
+        <div class="form-check col-lg-6 col-md-6 col-6" onclick="document.location.href='{% url 'church:mpesa' %}'" style="cursor: pointer;">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
           <div class="form-check-label card border-0" for="flexRadioDefault1">
-            <img src="./assets/mpesa.png" class="card-img w-50">
+            <img src="{% static './assets/mpesa.png' %}" class="card-img w-50">
           </div>
         </div>
 
 
-        <div class="form-check col-lg-6 col-md-6 col-6" onclick="document.location.href='card.html'" style="cursor: pointer;"">
+        <div class="form-check col-lg-6 col-md-6 col-6" onclick="document.location.href='{% url 'church:card' %}'" style="cursor: pointer;">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
           <div class="form-check-label card border-0" for="flexRadioDefault2">
-            <img src="./assets/card.png" class="card-img w-50">
+            <img src="{% static './assets/card.png' %}" class="card-img w-50">
           </div>
         </div>
         </div>

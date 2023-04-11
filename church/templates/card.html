@@ -6,37 +6,156 @@ Card
 {% endblock %}
 
 {% block content %}
-     <!-- header image -->
 
-     <div class="about-header position-relative">
-        <h1 class="header-text text-light top-50">Give</h1>
-      </div>
+<style>
+  #card-number, #expiration-date, #cvv,
+  #full_name, #phone_number, #amount {
+    border: .5px solid #dee2e6;
+    height: 32px;
+    padding: 1px;
+  }
 
-      <!-- header image end-->
+</style>
+         
+  <div class="container-fluid">
+
+    <div class="row justify-content-center mx-auto mt-5 container">   
       
-      <div class="container-fluid">
+        {% for message in messages %}
+            <div class="container-fluid p-2">
+              {% if message %}
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                  {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
 
-        <div class="row justify-content-center mx-auto container pt-4 mt-5">
+        <div class="p-5 w-75 payment-method col-lg-5 col-md-8 col-10 mb-5">
 
-            
+          <form id="payment" method="post">
+            <h2 class="fw-medium text-center pb-3">Card Option</h2>
 
-            <div class="p-5 payment-method  col-lg-5 col-md-8 col-10 mb-5">
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <label for="full_name" class="fw-medium fs-6">Holder's Name</label>
+                <input type="text" required name="name" id="full_name" class="form-control rounded border-2">
+              </div>
 
-              <form action="">
-                <h2 class="fw-bold text-center pb-3">Mpesa Option</h2>
-
-                <input type="number" class="form-control mb-3" placeholder="Card Number" aria-label="Phone Number" aria-describedby="basic-addon1">
-
-                <input type="number" class="form-control mb-3" placeholder="CVV" aria-label="Phone Number" aria-describedby="basic-addon1">
-
-                <input type="date" class="form-control mb-3" placeholder="Date of Expiry" aria-label="Phone Number" aria-describedby="basic-addon1">
-
-                <input type="submit" value="Give" class="btn btn-md btn-danger btn-outline-dark text-center fw-medium border-0">
-
-              </form>
-              
+              <div class="col-lg-6 col-12">
+                <label for="phone_number" class="fw-medium fs-6">Phone Number</label>
+                <input type="text" required name="phone_number" id="phone_number" class="form-control rounded border-2">
+              </div>
             </div>
 
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <label for="card-number" class="fw-medium fs-6">Card Number</label>
+                <div id="card-number" class="field rounded"></div>
+              </div>
 
+              <div class="col-lg-6 col-12">
+                <label for="cvv" class="fw-medium fs-6">CVV</label>
+                <div id="cvv" class="field rounded"></div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-12">
+                <label for="expiration-date" class="fw-medium fs-6">Expiration Date</label>
+                <div id="expiration-date" class="field rounded"></div>
+              </div>
+
+              <div class="col-lg-6 col-12">
+                <label for="amount" class="fw-medium fs-6">Amount</label>
+                <input type="number" required name="amount" id="amount" class="form-control rounded border-2">
+              </div>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" required  value="tithe" type="radio" name="purpose" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Tithe
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" required  value="offering" type="radio" name="purpose" id="flexRadioDefault2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Offering
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" required  value="other" type="radio" name="purpose" id="flexRadioDefault3">
+              <label class="form-check-label" for="flexRadioDefault3">
+                Other
+              </label>
+            </div>          
+
+            <input type="hidden" id="nonce" name="payment_method_nonce" value="">
+
+            {% csrf_token %}
+            <div class="text-center">
+              <input type="submit" value="Give" class="btn btn-md btn-danger btn-outline-dark text-center fw-medium border-0">
+            </div>
+          </form>
+          
+          
         </div>
+        
+      <!-- includes the Braintree JS client SDK -->
+      <script src="https://js.braintreegateway.com/web/3.58.0/js/client.min.js"></script>
+      <script src="https://js.braintreegateway.com/web/3.58.0/js/hosted-fields.min.js"></script>
+      <script>
+        var form = document.querySelector('#payment');
+        var submit = document.querySelector('input[type="submit"]');
+
+        braintree.client.create({
+          authorization: '{{ client_token }}'
+        }, function (clientErr, clientInstance) {
+          if (clientErr) {
+            console.error(clientErr);
+            return;
+          }
+
+          braintree.hostedFields.create({
+            client: clientInstance,
+            styles: {
+              'input': {'font-size': '13px'},
+              'input.invalid': {'color': 'red'},
+              'input.valid': {'color': 'green'}
+            },
+            fields: {
+              number: {selector: '#card-number'},
+              cvv: {selector: '#cvv'},
+              expirationDate: {selector: '#expiration-date'}
+            }
+          }, function (hostedFieldsErr, hostedFieldsInstance) {
+            if (hostedFieldsErr) {
+              console.error(hostedFieldsErr);
+              return;
+            }
+
+            submit.removeAttribute('disabled');
+
+            form.addEventListener('submit', function (event) {
+              event.preventDefault();
+
+              hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+                if (tokenizeErr) {
+                  console.error(tokenizeErr);
+                  return;
+                }
+                // set nonce to send to the server
+                document.getElementById('nonce').value = payload.nonce;
+                // submit form
+                document.getElementById('payment').submit();
+              });
+            }, false);
+          });
+        });
+      </script>
+
+    </div>
 {% endblock %}

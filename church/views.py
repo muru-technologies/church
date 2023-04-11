@@ -1,19 +1,30 @@
+import os
 import hashlib
 import logging
+import json
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import DetailView, ListView
 from django.contrib import messages
 from django.utils import timezone
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
 
-from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony, Career
+from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony, Career, MpesaPayment, CardPayment
 from .forms import EmailForm
+from .mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
 
 from mailchimp_marketing import Client
 from mailchimp_marketing.api_client import ApiClientError
+import requests
+from requests.auth import HTTPBasicAuth
+import braintree
+
+
+# instantiate Braintree payment gateway
+gateway = braintree.BraintreeGateway(settings.BRAINTREE_CONF)
 
 logger = logging.getLogger(__name__)
 
@@ -316,17 +327,6 @@ def testimony(request):
     else:
         return render(request, 'testimony.html')
 
-
-# class CareerList(ListView):
-#     queryset = Career.objects.filter(status='publish').order_by('-publish')
-#     template_name = 'careers.html'
-#     paginate_by = 6
-    
-    
-# class CareerDetail(DetailView):
-#     model = Career
-#     template_name = 'career_detail.html'
-
 def kama(request):
     return render(request, 'kama.html')
 
@@ -354,8 +354,215 @@ def choir(request):
 def give(request):
     return render(request, 'give.html')
 
-def card(request):
-    return render(request, 'card.html')
+def get_access_token(request):
+    consumer_key = settings.consumer_key
+    consumer_secret = settings.consumer_secret
 
+    # url for generating mpesa token
+    api_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+
+    # initiate http call to mpesa sandbox
+    r = requests.get(api_url, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+
+    # parsing the json string from safaricom
+    mpesa_access_token = json.loads(r.text)
+
+    # accessing the mpesa token
+    validated_mpesa_access_token = mpesa_access_token['access_token']
+
+    return HttpResponse(validated_mpesa_access_token)
+
+def card(request):
+    if request.method == 'POST':
+        # retrieve nonce
+        nonce = request.POST.get('payment_method_nonce', None)
+        amount = request.POST.get('amount')
+        
+        # create and submit transaction
+        result = gateway.transaction.sale({
+            'amount': amount,
+            'payment_method_nonce': nonce,
+            'options': {
+                'submit_for_settlement': True
+            }
+        })
+        
+        if result.is_success:
+            braintree_id = result.transaction.id
+            name = request.POST.get('name')
+            phone_number = request.POST.get('phone_number')
+            purpose = request.POST.get('purpose')
+            amount = amount
+            status = True
+            
+            print(nonce)
+            
+            payment = CardPayment(
+                braintree_id = braintree_id,
+                holder_name = name,
+                phone_number = phone_number,
+                purpose = purpose,
+                amount = amount,
+                status = status
+            )
+            
+            payment.save()
+            
+            messages.success(request, 'You have successfully submitted your request.')
+            return render(request, 'card.html')
+       
+        else:
+            messages.error(request, 'Error Making Payment Please Try Again Later.')
+            return render(request, 'card.html')
+    else:   
+        # generate token
+        client_token = gateway.client_token.generate()
+        return render(request, 'card.html',
+                      {'client_token': client_token,})
+    
+    
+# mpesa STK PUSH
 def mpesa(request):
-    return render(request, 'mpesa.html')
+    if request.method == 'POST':
+        phone_number = request.POST.get('phone_number')
+        amount = request.POST.get('amount')
+        
+        access_token = MpesaAccessToken.validated_mpesa_access_token
+        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+
+        headers = {"Authorization": "Bearer %s" % access_token}
+
+        # request info to daraja
+        payload = {
+            "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,  # paybill or buy goods till number
+            "Password": LipanaMpesaPpassword.decode_password,  # password used to encrypt the requests sent
+            "Timestamp": LipanaMpesaPpassword.lipa_time,  # transaction timestamp
+            "TransactionType": "CustomerPayBillOnline",  # used to identify the type of transaction
+            "Amount": amount,  # the amount you intend to pay
+            "PartyA": phone_number,  # phone number sending the money
+            "PartyB": LipanaMpesaPpassword.Business_short_code,  # organization receiving the funds can also be
+            "PhoneNumber": phone_number,  # number to receive the STK pin Prompt. can be same as PartA
+            "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",  # valid secure url used to receive notifications
+            # from mpesa api. it is the endpoint to which the results will be sent by the mpesa api
+            "AccountReference": "ACK St. Peter's Cathedral Voi",  # the name of the business
+            "TransactionDesc": "Payment for ACK St. Peter's Cathedral Voi",
+            # additional information that that can be sent along with the sys's req
+            "ResponseType":"[Cancelled/Completed]",
+        }
+
+        response = requests.post(api_url, json=payload, headers=headers)
+        
+        print("this is the response")
+        print(response.text)
+        
+        
+        # Parse response and save payment details to database
+        print(response.status_code)
+        
+        if response.status_code == 200:
+            response_data = response.json()
+            print(response_data)
+            
+            if response_data['ResponseCode'] == '0':
+                                
+                # Check payment status using Mpesa Transaction Status API
+                transaction_status_payload = {
+                    "Initiator": "Testapp",  # username used to authenticate the transaction request
+                    "SecurityCredential": LipanaMpesaPpassword.decode_password,  # password used to authenticate the
+                    "CommandID": "TransactionStatusQuery",
+                    'TransactionID': response_data['MerchantRequestID'],
+                    "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,  # paybill or buy goods till number
+                    
+                    'PartyA': LipanaMpesaPpassword.Test_c2b_shortcode,
+                    'IdentifierType': '4',
+                    'ResultURL': "https://f1bf-197-155-74-242.ngrok-free.app/confirmation/",
+                    'QueueTimeOutURL': "https://f1bf-197-155-74-242.ngrok-free.app/mpesa_callback/",
+                    'Remarks': 'Test query',
+                }
+                transaction_status_url = 'https://sandbox.safaricom.co.ke/mpesa/transactionstatus/v1/query'
+                
+                transaction_status_response = requests.post(
+                    transaction_status_url,
+                    json=transaction_status_payload,
+                    headers=headers
+                )
+                
+                print(transaction_status_response.text)
+                
+                if transaction_status_response.status_code == 200:
+                    transaction_status_data = transaction_status_response.json()
+                    print("this is the transaction status data")
+                    print(transaction_status_data)
+                    if transaction_status_data['ResponseCode'] == '0':                        
+                        mpesa_payment = MpesaPayment.objects.create(
+                            phone_number=phone_number,
+                            amount=amount,
+                        )
+                        mpesa_payment.status = transaction_status_data['ResponseDescription']
+                        mpesa_payment.save()
+                        return render(request, 'mpesa_success.html')
+                        # return HttpResponse('check your phone and enter the pin to complete the payment')
+                    else:
+                        # mpesa_payment.status = 'Payment failed'
+                        return HttpResponse('Payment failed')
+                else:
+                    # mpesa_payment.status = 'Transaction status query failed 1'
+                    return render(request, 'mpesa_failed.html')
+            else:
+                return render(request, 'mpesa_failed.html')
+        else:
+            return render(request, 'mpesa_error.html')
+    else:
+        
+        return render(request, 'mpesa.html')
+    
+
+# call back url
+@csrf_exempt
+def mpesa_callback(request):
+    # Get the request data
+    data = json.loads(request.body.decode('utf-8'))
+    print(data)
+
+    # Check if the transaction was successful
+    if data["Body"]["stkCallback"]["ResultCode"] == 0:
+        # # Get the transaction details
+        # transaction_date = data["Body"]["stkCallback"]["CallbackMetadata"]["Item"][3]["Value"]
+        # transaction_amount = data["Body"]["stkCallback"]["CallbackMetadata"]["Item"][0]["Value"]
+        # transaction_reference = data["Body"]["stkCallback"]["CallbackMetadata"]["Item"][1]["Value"]
+
+        # # Save the transaction to the database
+        # transaction = MpesaPayment(
+        #     date=transaction_date,
+        #     amount=transaction_amount,
+        #     reference=transaction_reference,
+        # )
+        # transaction.save()
+
+        # Return a success response
+        response = {
+            "ResultCode": 0,
+            "ResultDesc": "The service was accepted successfully",
+        }
+    else:
+        # Return an error response
+        response = {
+            "ResultCode": 1,
+            "ResultDesc": "The service was not accepted",
+        }
+
+    return HttpResponse(json.dumps(response), content_type="application/json")
+
+
+# getting the mpesa transaction
+@csrf_exempt
+def confirmation(request):
+    mpesa_body =request.body.decode('utf-8')
+    print("this is the mpesa body")
+    print(mpesa_body)
+    
+    context = {
+        "ResultCode": 0,
+        "ResultDesc": "Accepted"
+    }
+    return JsonResponse(dict(context))
