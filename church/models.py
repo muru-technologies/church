@@ -202,6 +202,7 @@ class MpesaCallBacks(BaseModel):
 class MpesaPayment(BaseModel):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     phone_number = models.TextField()
+    purpose = models.CharField(max_length=200)
     status = models.TextField()
     
     class Meta:

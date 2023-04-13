@@ -355,8 +355,8 @@ def give(request):
     return render(request, 'give.html')
 
 def get_access_token(request):
-    consumer_key = settings.consumer_key
-    consumer_secret = settings.consumer_secret
+    consumer_key = 'GcvTjCwp8NxRpriHzKcepoeZe6XpUG0U'
+    consumer_secret = 'xYqFeI5UGF9rczMR'
 
     # url for generating mpesa token
     api_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
@@ -426,6 +426,7 @@ def mpesa(request):
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         amount = request.POST.get('amount')
+        purpose = request.POST.get('purpose')
         
         access_token = MpesaAccessToken.validated_mpesa_access_token
         api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
@@ -497,20 +498,26 @@ def mpesa(request):
                         mpesa_payment = MpesaPayment.objects.create(
                             phone_number=phone_number,
                             amount=amount,
+                            purpose=purpose,
                         )
                         mpesa_payment.status = transaction_status_data['ResponseDescription']
                         mpesa_payment.save()
-                        return render(request, 'mpesa_success.html')
+                        
+                        messages.info(request, "check your phone and enter the pin to complete the payment")
+                        return render(request, 'mpesa.html')
                         # return HttpResponse('check your phone and enter the pin to complete the payment')
                     else:
                         # mpesa_payment.status = 'Payment failed'
                         return HttpResponse('Payment failed')
                 else:
                     # mpesa_payment.status = 'Transaction status query failed 1'
-                    return render(request, 'mpesa_failed.html')
+                    messages.success(request, "Transaction failed. Please try again!")
+                    return render(request, 'mpesa.html')
             else:
-                return render(request, 'mpesa_failed.html')
+                messages.success(request, "Transaction failed. Please try again!")
+                return render(request, 'mpesa.html')
         else:
+            messages.success(request, "Error Occured while processing your transaction. Please try again!")
             return render(request, 'mpesa_error.html')
     else:
         
