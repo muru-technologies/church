@@ -190,14 +190,21 @@ footer:before {
 
 .married-header{
     background-image: url(../assets/married.png);
+    background-position: center center;
 }
 
 .prayer-header{
     background-image: url(../assets/prayer.jpeg);
+    background-position: center center;
+}
+
+.dedicate-header{
+    background-image: url(../assets/dedicate.webp);
 }
 
 .member-header{
     background-image: url(../assets/member.png);
+    background-position: center;
 }
 
 .careers-header{
@@ -206,6 +213,7 @@ footer:before {
 
 .give-header{
     background-image: url(../assets/donate.webp);
+    background-position: center center;
 }
 
 @media screen and (max-width: 1150px) {
