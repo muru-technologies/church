@@ -7,6 +7,19 @@ About Us
 
 {% block content %}
 
+<style>
+  .list-group-item{
+    border: solid 0.5px black;
+  }
+
+  .list-group-item.active {
+    z-index: 2;
+    color: red;
+    background-color: yellow;
+    border-color: black;
+}
+</style>
+
  <!-- header image -->
 
   <div class="about-header position-relative">
@@ -160,10 +173,6 @@ About Us
       <!-- Services end -->
 
 
-     
-
-      
-
     <!-- Ministers -->
     <div id="row justify-content-center mx-auto container">
 
@@ -212,79 +221,6 @@ About Us
     </div>
 
       
-    
-    <!-- The Church Group -->
-    <div>
-      <div class="row mt-5 mx-auto justify-content-center">
-        
-        <div class="col-7">
-          <h2 class="text-center text-wrap fw-medium">Church Groups</h2>
-        </div>
-
-        <div class="col-12 row mt-5 justify-content-center">
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/men.png' %}" class="group-img p-3 mx-auto d-block rounded-circle" alt="kama">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:kama' %}" class="text-decoration-none fw-medium text-dark"> Kenya Anglican Men Association</a>
-            </h6>
-          </div>
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/mothersunion.png' %}" class="group-img p-3 mx-auto d-block rounded-circle" alt="praise and worship">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:women' %}" class="text-decoration-none fw-medium text-dark"> Mother's Union & CWF </a>
-            </h6>
-          </div>
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/youth.png' %}" class="group-img p-3 mx-auto d-block rounded-circle" alt="praise and worship">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:youth' %}" class="text-decoration-none fw-medium text-dark"> Kenya Anglican Youth Organization</a>
-            </h6>
-          </div>
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/boysbrigade.png' %}" class="group-img p-3 mx-auto d-block rounded-circle" alt="praise and worship">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:boys' %}" class="text-decoration-none fw-medium text-dark"> Boys Brigade </a>
-            </h6>
-          </div>
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/girlscout.png' %}" class="group-img p-3 mx-auto d-block rounded-circle" alt="praise and worship">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:girls' %}" class="text-decoration-none fw-medium text-dark"> Girls' Friendly Society</a>
-            </h6>
-          </div>
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/praise&adoration.png' %}" class="group-img p-3 mx-auto d-block rounded-circle" alt="praise and worship">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:praise' %}" class="text-decoration-none fw-medium text-dark"> Praise & Adoration</a>
-            </h6>
-          </div>
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/choir.png' %}" class="group-img p-3 mx-auto d-block rounded-circle" alt="praise and worship">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:choir' %}" class="text-decoration-none fw-medium text-dark"> Church Choir</a>
-            </h6>
-          </div>
-
-          <div class="col-lg-2 col-md-3 col-6">
-            <img src="{% static './assets/children.png' %}" class="group-img mx-auto d-block rounded-circle" alt="praise and worship">
-            <h6 class="fw-bold text-center mt-2">
-              <a href="{% url 'church:children' %}" class="text-decoration-none fw-medium text-dark"> Childrens' Ministry</a>
-            </h6>
-          </div>
-
-          
-        </div>
-        
-      </div>
-    </div>
-
-    <!-- Some info end-->
+    {% include 'church-groups.html' %}
 
 {% endblock %}

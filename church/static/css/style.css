@@ -32,6 +32,10 @@ body{
     width: 100px;
 }
 
+#topheader{
+    box-shadow: 0 1.5px 5px rgb(0 0 0 / 1.5);
+}
+
 #topheader .navbar-nav li.active > a{
     color: #dc3545;
     border-bottom: black solid 2px;
@@ -55,18 +59,27 @@ body{
     transition: .5s; 
 }
 
-.carousel-inner{
-    height: 100%;
-}
 .group-img{
     width: 100px;
     height: 100px;
 }
 
-.group-img:hover{
-    width: 102px;
-    height: 102px;
-    transition: .5s;
+.group-cont{
+    box-shadow: 0 0.5px 3px rgb(0 0 0 / 1);
+}
+
+.group-cont:hover{
+    box-shadow: 0 1.5px 5px rgb(0 0 0 / 1.5);
+}
+
+.group-learn-more{
+    border-top: 1px solid rgba(5, 4, 82, 0.9);
+    padding-top: 5px;
+}
+
+.group-learn-more, .group-title{
+    color: black;
+    font-size: small;
 }
 
 .custom-donation-amount input {
@@ -82,7 +95,7 @@ body{
     color: black;
 }
 
-.sermon-title:hover{
+.sermon-title:hover, .group-learn-more:hover{
     color: #dc3545;
     transition: .5s;
 }
@@ -100,7 +113,7 @@ body{
 }
 
 .sermon-link:hover{
-    color: white;
+    color: #ffc107;
     transition: .5s;
 }
 
@@ -240,7 +253,7 @@ footer:before {
 /* About page */
 
 .hist-item{
-    border-left: 2px solid rgba(5, 4, 82, 0.9);
+    border-left: 2px solid black;
 }
 
 .hist-item::before {
@@ -253,7 +266,7 @@ footer:before {
     margin-left: -18px;
  
     background: #fff;
-    border: 2px solid rgba(5, 4, 82, 0.9);
+    border: 2px solid #dc3545;
 }
 
 .hist-dates{
@@ -293,7 +306,7 @@ footer:before {
 
 .accordion-button:focus {
     z-index: 3;
-    border-color: red;
+    border-color: #dc3545;
     outline: 0;
     color: black;
 }
@@ -441,7 +454,7 @@ img {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: rgba(156, 6, 6, 0.5);
+    background-color:#ffc107;
     border-radius: 10px;
 }
 

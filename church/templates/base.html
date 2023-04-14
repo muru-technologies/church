@@ -33,7 +33,7 @@
 
     </head>
 
-    <body class="bs-secondary-bg-rgb" onload="preLoader()">
+    <body class="bg-light" onload="preLoader()">
 
       <!-- Preloader -->
       {% comment %} <div id="loader" class="text-center fw-bold text-danger">
@@ -43,7 +43,7 @@
       {% comment %} id="cont" {% endcomment %}
       <div > 
         <!-- Navbar Start-->
-          <nav class="mt-2 container-fluid navbar bg-body-tertiary navbar-expand-lg fixed-top shadow-sm bg-body-tertiary position-sticky" id="topheader">
+          <nav class="mt-2 container-fluid navbar bg-white navbar-expand-lg fixed-top position-sticky" id="topheader">
               <div class="container-fluid">
 
                 <a class="navbar-brand" href="{% url 'church:index' %}"> 
@@ -79,7 +79,7 @@
                           <div class="dropdown-item ">
                             <div class="row">
 
-                              <div class="col-10 text-wrap">
+                              <div class="col-lg-4 col-10 text-wrap">
                                 <h3> INFORMATION CENTER</h3>
                                   <p> 
                                     Welcome to ACK St. Peter's Cathedral, a house of God where we gather to praise and worship the creator. 
@@ -87,7 +87,7 @@
                                   </p>
                               </div>
 
-                              <div class="col-10 text-wrap">
+                              <div class="col-lg-4 ccol-10 text-wrap">
                                 <h4> ENQUIRE </h4>
                                   
                                   <ul class="list-unstyled ">    
@@ -117,7 +117,7 @@
                                   </ul>
                               </div>
 
-                              <div class="col-10 text-wrap">
+                              <div class="col-lg-4 ccol-10 text-wrap">
                                 <h4> Connect </h4>
                                   
                                   <ul class="list-unstyled ">
@@ -190,9 +190,9 @@
                     
                     
                   <div>
-                    <a href="" class="p-2 btn btn-sm btn-danger text-light fw-medium btn-outline-dark border-0" aria-current="page" href="#">Live Stream</a>
+                    <a href="" class="p-2 btn btn-sm btn-dark text-danger fw-medium btn-outline-warning border-0" aria-current="page" href="#">Live Stream</a>
                     
-                    <a class="p-2 btn btn-sm btn-danger text-light fw-medium btn-outline-dark border-0" aria-current="page" href="{% url 'church:give' %}">Give</a>
+                    <a class="p-2 btn btn-sm btn-warning text-danger fw-medium btn-outline-dark border-0" aria-current="page" href="{% url 'church:give' %}">Give</a>
                     
                   </div>
                   
@@ -213,14 +213,14 @@
           <!-- Footer -->  
           <footer class="">
             
-            <div class="bg-danger-subtle mt-5 p-5 text-dark position-relative">
+            <div class="bg-warning mt-5 p-5 text-dark position-relative">
               <h3> Lets Keep in Touch</h3>
               <p> Subscribe to keep up with latest news and exciting sermons</p>
 
               <div class="">
-                <form method="POST" action="{% url 'church:subscribe' %}" class="input-group mb-3 w-75">
+                <form method="POST" action="{% url 'church:subscribe' %}" class="input-group mb-3 w-100 px-5">
                   {% csrf_token %}
-                  <input type="email" name="subscriber_email" id="subscriber_email" class="form-control p-2 rounded-0" placeholder="your-email@example.com" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <input type="email" name="subscriber_email" id="subscriber_email" class="form-control p-2 rounded-0 border" placeholder="your-email@example.com" aria-label="Recipient's username" aria-describedby="button-addon2">
                   
                   <button class="btn btn-danger fw-bold" type="submit" id="button-addon2">SUBSCRIBE</button>
                 </form>
@@ -326,7 +326,7 @@
               <div class="">
                 
                 <p class="text-white text-center">
-                  © Copyright <span class="text-danger"> 2023 ACK St. Peter's Cathedral Voi </span> - All Rights Reserved.
+                  © Copyright <span class="text-warning"> 2023 ACK St. Peter's Cathedral Voi </span> - All Rights Reserved.
                 </p>
 
               </div>
