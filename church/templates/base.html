@@ -228,11 +228,12 @@
                         
             </div>
 
-            <div class="row justify-content-around pt-4 pb-2 foot-cont position-relative">
+            <div class="row justify-content-center mx-auto p-2 pt-4 pb-2 foot-cont position-relative">
 
-              <div class="col-lg-2 col-md-5 col-10 text-white">
+              <div class="col-lg-3 col-md-5 col-10 text-white">
                 <img src="{% static './assets/logo.png' %}" class="logo d-inline" alt="">
 
+                <br>
                 <h5 class="mt-4 fw-bold d-inline text-wrap">
                   ACK St. Peters Cathedral
                 </h5>
@@ -242,7 +243,7 @@
                 <p><i class="fa-solid fa-envelope"></i> &nbsp; info@ackstpeterscathedral.com</p>
               </div>
 
-              <div class="col-lg-2 col-md-5 col-10 ">
+              <div class="col-lg-3 col-md-5 col-10 ">
                 <h4 class="fw-bold text-light"> Quick Links </h4>
                 <ul class="list-unstyled">
                   <li class="pt-2"><i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:index' %}" class="text-decoration-none foot-link">Home</a></li>
@@ -255,7 +256,7 @@
                 
               </div>
 
-              <div class="col-lg-2 col-md-5 col-10">
+              <div class="col-lg-3 col-md-5 col-10">
                 <h4 class="fw-bold text-light"> ENQUIRE </h4>                                
                 <ul class="list-unstyled ">
                   <li class="pb-1">
@@ -272,9 +273,24 @@
                   </li>
 
                 </ul>
+
+                <h4 class="fw-bold text-light"> Connect</h4>                                
+                <ul class="list-unstyled ">
+                  <li class="pb-1">
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:prayer_request' %}" class="text-decoration-none foot-link"> Prayer Requests</a>
+                  </li>
+                  <li class="pb-1">
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:testimony' %}" class="text-decoration-none foot-link"> Give a Testimony</a>
+                  </li>
+                  <li class="pb-1">
+                    <i class="fa-solid fa-chevron-right text-danger">&nbsp;</i><a href="{% url 'church:new_member' %}" class="text-decoration-none foot-link"> New Member? </a>
+                  </li>
+
+                </ul>
+
               </div>    
               
-              <div class="col-lg-4 col-md-7 col-10">
+              <div class="col-lg-3 col-md-5 col-10">
                 <ul class="list-unstyled">
                   <h4 class="fw-bold text-light"> Church Groups</h4>
                   <li class="pb-1">
