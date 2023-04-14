@@ -417,8 +417,8 @@ def card(request):
     else:   
         # generate token
         client_token = gateway.client_token.generate()
-        return render(request, 'card.html',
-                      {'client_token': client_token,})
+        return render(request, 'coming_soon.html') # 'card.html',
+                      # {'client_token': client_token,})
     
     
 # mpesa STK PUSH
@@ -426,7 +426,11 @@ def mpesa(request):
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         amount = request.POST.get('amount')
-        purpose = request.POST.get('purpose')
+        
+        if request.POST.get('purpose') == 'other':
+            purpose = request.POST.get('other-donation')
+        else:
+            purpose = request.POST.get('purpose')
         
         access_token = MpesaAccessToken.validated_mpesa_access_token
         api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
@@ -503,7 +507,7 @@ def mpesa(request):
                         mpesa_payment.status = transaction_status_data['ResponseDescription']
                         mpesa_payment.save()
                         
-                        messages.info(request, "check your phone and enter the pin to complete the payment")
+                        messages.info(request, "Check your phone and enter the pin to complete the payment")
                         return render(request, 'mpesa.html')
                         # return HttpResponse('check your phone and enter the pin to complete the payment')
                     else:
@@ -518,7 +522,7 @@ def mpesa(request):
                 return render(request, 'mpesa.html')
         else:
             messages.success(request, "Error Occured while processing your transaction. Please try again!")
-            return render(request, 'mpesa_error.html')
+            return render(request, 'mpesa.html')
     else:
         
         return render(request, 'mpesa.html')

@@ -69,7 +69,8 @@ class CareerAdmin(admin.ModelAdmin):
     
 @admin.register(MpesaPayment)
 class MpesaPaymentAdmin(admin.ModelAdmin):
-    list_display = ('phone_number', 'amount', 'status', 'created_at')
+    list_display = ('phone_number', 'amount', 'status', 'created_at','purpose')
+    list_filter = ('purpose', )
     search_fields = ('phone_number', )
     date_hierarchy = 'created_at'
     ordering = ('created_at',)

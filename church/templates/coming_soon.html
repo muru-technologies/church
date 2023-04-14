@@ -6,9 +6,34 @@ Coming Soon
 {% endblock %}
 
 {% block content %}
+<style>
+  .coming-soon{
+    background-image: url("{% static 'assets/coming-soon.gif' %}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 85vh;
+    width: 100%;
+    margin: 0;
+  }
 
-  <div class="coming-soon">
-    
+  .coming-soon-text{
+    font-size: 10vw;
+    background: -webkit-linear-gradient(#d16ba5, #f47391, #ff8577, #ffa15d, #ffc14c, #ecd65a, #d7e972, #c1fa92, #b5febb, #baffdb, #cffdf0, #eef9f8);
+   
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+
+<div class="container-fluid">
+
+    <div class="coming-soon row">
+      <div class="coming-soon-cont col align-self-center">
+        <h1 class="text-center text-white coming-soon-text">Coming Soon</h1>
+        <p class="text-center text-white">We are working hard to get this page ready for you.</p>
+      </div>
+    </div>
     
 
     <!-- Subscribe form -->
