@@ -128,22 +128,21 @@ ACK St. Peters
 
     <div class="mt-5">
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center shadow-sm m-2">
 
-        <div class="col-lg-6 col-md-6 col-12">
+        <div class="col-lg-5 col-md-6 col-12 ">
           <img src="{% static './assets/donate.webp' %}" class="w-100 h-100" alt="donate-img">
         </div>
 
 
-        <div class="col-lg-6 col-md-6 col-12 p-5 bg-danger-subtle bg-opacity-75">
+        <div class="col-lg-5 col-md-6 col-12 p-5 align-self-center">
           <h4>Stand Up with the Church</h4>
 
           <p style="text-align:justify;">
-            Your donations help us to continue to spread the gospel of Jesus Christ.
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod, repellendus tempora voluptatibus ipsum corporis veritatis. Voluptas, repellendus ea pariatur nisi voluptates vitae incidunt excepturi non modi labore, maiores fugit tempora.
+            Good will come to those who are generous and lend freely ... - Psalms 112:5
           </p>
 
-          <a href="give.html" class="btn btn-danger fw-medium py-2 px-3 rounded" type="button"> Give </a>
+          <a href="{% url 'church:give' %}" class="btn btn-danger fw-medium py-2 px-3 rounded" type="button"> Give </a>
 
         </div>
       
