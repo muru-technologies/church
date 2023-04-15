@@ -34,9 +34,9 @@ Contact Us
       {% endfor %}
 
         <h1 class="text-center mb-5"> Have any Questions? <br> Feel Free to Contact Us</h1>
-        <div class="col-lg-4 col-md-4 col-8 align-self-center fs-5">
+        <div class="col-lg-4 col-md-4 col-12 align-self-center fs-5">
             
-            <div class="col-10 align-self-center mx-auto text-center">
+            <div class="col-12 align-self-center mx-auto text-center">
               
               <div class="mb-2">
                 <div class="contact-details">
@@ -72,23 +72,23 @@ Contact Us
             </div>
         </div>
 
-        <div class="col-lg-5 col-md-5 col-8">
+        <div class="col-lg-5 col-md-5 col-12">
             <form method="POST">
                 {% csrf_token %}
                 <div class="row justify-content-center">
-                    <div class="col-10">
+                    <div class="col-12">
                         <input type="text" name="name" class="form-control mb-3 rounded-pill p-3" placeholder="Full Name" aria-label="Full Name" aria-describedby="basic-addon1">
                     </div>
 
-                    <div class="col-10">
+                    <div class="col-12">
                         <input type="email" name="email" class="form-control mb-3 rounded-pill p-3" placeholder="Email Address" aria-label="Phone Number" aria-describedby="basic-addon1">
                     </div>
 
-                    <div class="col-10">
+                    <div class="col-12">
                         <input type="text" name="subject" class="form-control mb-3 rounded-pill p-3" placeholder="Subject" aria-label="Subject" aria-describedby="basic-addon1">
                     </div>
 
-                    <div class="col-10">
+                    <div class="col-12">
                         <textarea name="message" class="form-control mb-3 rounded-5" name="Your Testimony" placeholder="Your Message" style="height: 200px;"></textarea>
                     </div>
                 </div>
