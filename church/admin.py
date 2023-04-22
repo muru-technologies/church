@@ -69,17 +69,16 @@ class CareerAdmin(admin.ModelAdmin):
     
 @admin.register(MpesaPayment)
 class MpesaPaymentAdmin(admin.ModelAdmin):
-    list_display = ('phone_number', 'amount', 'status', 'created_at','purpose')
-    list_filter = ('purpose', )
-    search_fields = ('phone_number', )
-    date_hierarchy = 'created_at'
-    ordering = ('created_at',)
+    list_display = ('phone_number', 'amount', 'receipt_number', 'date')
+    list_filter = ('date',)
+    search_fields = ('phone_number', 'receipt_number')
+    ordering = ('date',)
     
     
 @admin.register(CardPayment)
 class CardPaymentAdmin(admin.ModelAdmin):
     list_display = ('braintree_id', 'holder_name', 'phone_number', 'amount', 'status', 'purpose', 'created_at')
-    search_fields = ('phone_number', )
+    search_fields = ('phone_number', )   
     date_hierarchy = 'created_at'
     ordering = ('created_at',)
     

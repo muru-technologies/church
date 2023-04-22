@@ -169,56 +169,27 @@ class Career(models.Model):
                                                        self.slug])
 
 
-class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+     
+class MpesaPayment(models.Model):
+    """Model definition for MpesaPayment."""
+    receipt_number = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=255)
+    amount = models.FloatField()
+    date = models.DateTimeField(auto_now_add=False)
+    status = models.BooleanField(default=False)
+
     class Meta:
-        abstract = True
-        
-        
-# M-pesa Payment models
-class MpesaCalls(BaseModel):
-    ip_address = models.TextField()
-    caller = models.TextField()
-    conversation_id = models.TextField()
-    content = models.TextField()
-    class Meta:
-        verbose_name = 'Mpesa Call'
-        verbose_name_plural = 'Mpesa Calls'
-        
-        
-class MpesaCallBacks(BaseModel):
-    ip_address = models.TextField()
-    caller = models.TextField()
-    conversation_id = models.TextField()
-    content = models.TextField()
-    
-    
-    class Meta:
-        verbose_name = 'Mpesa Call Back'
-        verbose_name_plural = 'Mpesa Call Backs'
-        
-        
-class MpesaPayment(BaseModel):
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    phone_number = models.TextField()
-    purpose = models.CharField(max_length=200)
-    status = models.TextField()
-    
-    class Meta:
-        ordering = ('-created_at',)
-        
-        
-    class Meta:
-        verbose_name = 'Mpesa Payment'
-        verbose_name_plural = 'Mpesa Payments'
-        
-        
+        """Meta definition for MpesaPayment."""
+        verbose_name = 'MpesaPayment'
+        verbose_name_plural = 'MpesaPayments'
+        ordering = ('-date',)
+
     def __str__(self):
-        return self.phone_number
+        """Unicode representation of MpesaPayment."""
+        return self.receipt_number
+        
     
-    
-class CardPayment(BaseModel):
+class CardPayment(models.Model):
     braintree_id = models.CharField(max_length=200)
     holder_name = models.CharField(max_length=200)
     phone_number = PhoneNumberField()
