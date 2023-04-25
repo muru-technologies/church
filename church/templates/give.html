@@ -27,18 +27,18 @@ Give
         <div class="p-5 payment-method  col-lg-6 col-md-10 col-12 row justify-content-center">
           <h2 class="fw-bold text-center pb-5">Choose Payment Method</h2>
 
-        <div class="form-check col-lg-6 col-md-6 col-6" onclick="document.location.href='{% url 'church:mpesa' %}'" style="cursor: pointer;">
+        <div class="form-check col-lg-4 col-md-5 col-6" onclick="document.location.href='{% url 'church:mpesa' %}'" style="cursor: pointer;">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
           <div class="form-check-label card border-0" for="flexRadioDefault1">
-            <img src="{% static './assets/mpesa.png' %}" class="card-img w-50">
+            <img src="{% static './assets/mpesa.png' %}" class="card-img w-100">
           </div>
         </div>
 
 
-        <div class="form-check col-lg-6 col-md-6 col-6" onclick="document.location.href='{% url 'church:card' %}'" style="cursor: pointer;">
+        <div class="form-check col-lg-4 col-md-5 col-6" onclick="document.location.href='{% url 'church:card' %}'" style="cursor: pointer;">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
           <div class="form-check-label card border-0" for="flexRadioDefault2">
-            <img src="{% static './assets/card.png' %}" class="card-img w-50">
+            <img src="{% static './assets/card.png' %}" class="card-img w-100">
           </div>
         </div>
         </div>
