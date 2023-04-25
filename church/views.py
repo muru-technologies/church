@@ -456,9 +456,9 @@ def mpesa(request):
             "Timestamp": LipanaMpesaPpassword.lipa_time,  # transaction timestamp
             "TransactionType": "CustomerPayBillOnline",  # used to identify the type of transaction
             "Amount": amount,  # the amount you intend to pay
-            "PartyA": int(phone_number_2),  # phone number sending the money
+            "PartyA": phone_number_2,  # phone number sending the money
             "PartyB": LipanaMpesaPpassword.Business_short_code,  # organization receiving the funds can also be
-            "PhoneNumber": int(phone_number_2),  # number to receive the STK pin Prompt. can be same as PartA
+            "PhoneNumber": phone_number_2,  # number to receive the STK pin Prompt. can be same as PartA
             "CallBackURL": "https://2d3d154b2ad0ff.lhr.life/mpesa-callback/",  # valid secure url used to receive notifications
             # from mpesa api. it is the endpoint to which the results will be sent by the mpesa api
             "AccountReference": purpose,  # the name of the business
