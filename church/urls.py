@@ -59,6 +59,8 @@ urlpatterns = [
     
     path('careers/', views.career_list, name='careers'),
     
+    path('committees/', views.committees, name='committees'),
+    
     path('<int:year>/<int:month>/<int:day>/<slug:career>/', views.career_detail, name='career_detail'),
     
     path('give/', views.give, name='give'),

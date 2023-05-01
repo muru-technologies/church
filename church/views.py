@@ -353,6 +353,11 @@ def praise(request):
 def choir(request):
     return render(request, 'choir.html')
 
+
+def committees(request):
+    return render(request, 'committee.html')
+
+
 def give(request):
     return render(request, 'give.html')
 
