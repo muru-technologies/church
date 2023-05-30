@@ -362,8 +362,8 @@ def give(request):
     return render(request, 'give.html')
 
 def get_access_token(request):
-    consumer_key = 'GcvTjCwp8NxRpriHzKcepoeZe6XpUG0U'
-    consumer_secret = 'xYqFeI5UGF9rczMR'
+    consumer_key = 'AteCdAQlFkkUpu4xLtNdBeHhA76yaWJJ'
+    consumer_secret = 'hvKGbT7Uk713czvP'
 
     # url for generating mpesa token
     api_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'

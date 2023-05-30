@@ -11,8 +11,8 @@ load_dotenv()
 
 
 class MpesaC2bCredential:
-    consumer_key = 'GcvTjCwp8NxRpriHzKcepoeZe6XpUG0U'
-    consumer_secret = 'xYqFeI5UGF9rczMR'
+    consumer_key = 'AteCdAQlFkkUpu4xLtNdBeHhA76yaWJJ'
+    consumer_secret = 'hvKGbT7Uk713czvP'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
 
