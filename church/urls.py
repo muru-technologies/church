@@ -67,7 +67,7 @@ urlpatterns = [
     
     path('card/', views.card, name='card'),
     
-    path('access/token', views.get_access_token, name='get_mpesa_access_token'),
+    # path('access/token', views.get_access_token, name='get_mpesa_access_token'),
     
     path('mpesa/', views.mpesa, name='mpesa'),
     

@@ -361,7 +361,7 @@ def committees(request):
 def give(request):
     return render(request, 'give.html')
 
-def get_access_token(request):
+# def get_access_token(request):
     consumer_key = 'AteCdAQlFkkUpu4xLtNdBeHhA76yaWJJ'
     consumer_secret = 'hvKGbT7Uk713czvP'
 

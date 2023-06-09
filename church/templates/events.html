@@ -31,7 +31,7 @@ Events
         <!-- single news&event -->
         <div class="col-lg-3 col-md-4 col-9 mt-3">
             <div class="card w-100 news-event-cont border-0" data-aos="zoom-in-up" data-aos-duration="1000">
-                <img src="{% cropped_thumbnail event "cropping" %}" class="card-img-top img news-event-img " alt="feature img">
+                <img src="{{ event.feature_img.url }}" class="card-img-top img news-event-img " alt="feature img">
 
                 <div class=" card-body text-center news-event-body-cont bg-light hvr-float">
                     <div class="calender-clock text-start bg-danger p-1 rounded fw-medium text-light">

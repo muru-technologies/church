@@ -34,7 +34,7 @@ Sermons
                 data-aos-duration="2000"
                 class="card shadow-sm position-relative" style="width: auto;">
                         
-              <img src="{% cropped_thumbnail sermon "cropping" %}" class="card-img-top" alt="sermin-img">
+              <img src="{{ sermon.feature_img.url }}" class="card-img-top" alt="sermin-img">
 
               <div class="bg-danger bg-opacity-75 text-center position-absolute top-50 start-100 translate-middle rounded-pill floating-bar">
                 

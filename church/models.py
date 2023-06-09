@@ -16,9 +16,7 @@ class Sermon(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique_for_date='publish')
     youtube = models.URLField(blank=True, null=True)
-    feature_img = ImageCropField(blank=True, null=True, upload_to='feature_img/')
-    # size in w X h
-    cropping = ImageRatioField('feature_img', '300x300')
+    feature_img = models.ImageField(blank=True, null=True, upload_to='feature_img/')
     preacher = models.CharField(max_length=50)
     readings = models.CharField(max_length=200)
     content = RichTextUploadingField()
@@ -47,9 +45,7 @@ class Event(models.Model):
     )
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique_for_date='publish')
-    feature_img = ImageCropField(blank=True, null=True, upload_to='feature_img/')
-    # size in w X h
-    cropping = ImageRatioField('feature_img', '200x200')
+    feature_img = models.ImageField(blank=True, null=True, upload_to='feature_img/')
     content = RichTextUploadingField()
     organizer = models.CharField(max_length=200, blank=True, null=True)
     location = models.CharField(max_length=200, blank=True, null=True)
