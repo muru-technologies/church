@@ -136,6 +136,10 @@ footer:before {
     background-color: rgba(5, 5, 39, 0.3);
 }
 
+.footlogo{
+    width: 280px;
+}
+
 .footer-cont {
     position: inherit;
 }
