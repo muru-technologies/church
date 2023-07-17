@@ -69,9 +69,9 @@ urlpatterns = [
     
     # path('access/token', views.get_access_token, name='get_mpesa_access_token'),
     
-    path('mpesa/', views.mpesa, name='mpesa'),
+    ## path('mpesa/', views.mpesa, name='mpesa'),
     
-    path('mpesa-callback/', views.mpesa_callback, name="mpesa_callback"),
+    # path('mpesa-callback/', views.mpesa_callback, name="mpesa_callback"),
         
     path('events/', views.EventList.as_view(), name='event_list'),
     

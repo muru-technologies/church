@@ -16,7 +16,7 @@ from django.middleware import csrf
 
 from .models import Sermon, Event, ChildDedication, PrayerRequest, NewBeleiver, Testimony, Career, MpesaPayment, CardPayment
 from .forms import EmailForm
-from .mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
+# from .mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
 
 from mailchimp_marketing import Client
 from mailchimp_marketing.api_client import ApiClientError
@@ -359,7 +359,8 @@ def committees(request):
 
 
 def give(request):
-    return render(request, 'give.html')
+    return render(request, 'coming_soon.html')
+    # return render(request, 'give.html')
 
 # def get_access_token(request):
     consumer_key = 'AteCdAQlFkkUpu4xLtNdBeHhA76yaWJJ'
@@ -428,112 +429,112 @@ def card(request):
                       # {'client_token': client_token,})
     
     
-# mpesa STK PUSH
-@csrf_exempt
-def mpesa(request):
-    if request.method == 'POST':
-        phone_number = request.POST.get('phone_number')
-        amount = request.POST.get('amount')
+# # mpesa STK PUSH
+# @csrf_exempt
+# def mpesa(request):
+#     if request.method == 'POST':
+#         phone_number = request.POST.get('phone_number')
+#         amount = request.POST.get('amount')
         
-        phone_number_1 = phone_number[1:]
+#         phone_number_1 = phone_number[1:]
         
-        str_phone_number = str(phone_number_1)
+#         str_phone_number = str(phone_number_1)
         
-        phone_number_2 = '254' + str_phone_number
+#         phone_number_2 = '254' + str_phone_number
         
-        print(phone_number_2)
+#         print(phone_number_2)
         
         
-        if request.POST.get('purpose') == 'other':
-            purpose = request.POST.get('other-donation')
-        else:
-            purpose = request.POST.get('purpose')
+#         if request.POST.get('purpose') == 'other':
+#             purpose = request.POST.get('other-donation')
+#         else:
+#             purpose = request.POST.get('purpose')
         
-        access_token = MpesaAccessToken.validated_mpesa_access_token
-        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+#         access_token = MpesaAccessToken.validated_mpesa_access_token
+#         api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
-        headers = {"Authorization": "Bearer %s" % access_token}
+#         headers = {"Authorization": "Bearer %s" % access_token}
 
-        # request info to daraja
-        payload = {
-            "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,  # paybill or buy goods till number
-            "Password": LipanaMpesaPpassword.decode_password,  # password used to encrypt the requests sent
-            "Timestamp": LipanaMpesaPpassword.lipa_time,  # transaction timestamp
-            "TransactionType": "CustomerPayBillOnline",  # used to identify the type of transaction
-            "Amount": amount,  # the amount you intend to pay
-            "PartyA": phone_number_2,  # phone number sending the money
-            "PartyB": LipanaMpesaPpassword.Business_short_code,  # organization receiving the funds can also be
-            "PhoneNumber": phone_number_2,  # number to receive the STK pin Prompt. can be same as PartA
-            "CallBackURL": "https://2d3d154b2ad0ff.lhr.life/mpesa-callback/",  # valid secure url used to receive notifications
-            # from mpesa api. it is the endpoint to which the results will be sent by the mpesa api
-            "AccountReference": purpose,  # the name of the business
-            "TransactionDesc": "Payment for ACK St. Peter's Cathedral Voi",  # a description of the transaction
-        }
+#         # request info to daraja
+#         payload = {
+#             "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,  # paybill or buy goods till number
+#             "Password": LipanaMpesaPpassword.decode_password,  # password used to encrypt the requests sent
+#             "Timestamp": LipanaMpesaPpassword.lipa_time,  # transaction timestamp
+#             "TransactionType": "CustomerPayBillOnline",  # used to identify the type of transaction
+#             "Amount": amount,  # the amount you intend to pay
+#             "PartyA": phone_number_2,  # phone number sending the money
+#             "PartyB": LipanaMpesaPpassword.Business_short_code,  # organization receiving the funds can also be
+#             "PhoneNumber": phone_number_2,  # number to receive the STK pin Prompt. can be same as PartA
+#             "CallBackURL": "https://2d3d154b2ad0ff.lhr.life/mpesa-callback/",  # valid secure url used to receive notifications
+#             # from mpesa api. it is the endpoint to which the results will be sent by the mpesa api
+#             "AccountReference": purpose,  # the name of the business
+#             "TransactionDesc": "Payment for ACK St. Peter's Cathedral Voi",  # a description of the transaction
+#         }
 
-        response = requests.post(api_url, json=payload, headers=headers)
+#         response = requests.post(api_url, json=payload, headers=headers)
         
-        print("this is the response")
-        print(response.text)
+#         print("this is the response")
+#         print(response.text)
         
         
-        # Parse response and save payment details to database
-        print(response.status_code)
+#         # Parse response and save payment details to database
+#         print(response.status_code)
         
-        if response.status_code == 200:
-            response_data = response.json()
-            print(response_data)
+#         if response.status_code == 200:
+#             response_data = response.json()
+#             print(response_data)
             
-            if response_data['ResponseCode'] == '0':
+#             if response_data['ResponseCode'] == '0':
                             
                         
-                messages.info(request, "Check your phone and enter the pin to complete the payment")
-                return render(request, 'mpesa.html')
+#                 messages.info(request, "Check your phone and enter the pin to complete the payment")
+#                 return render(request, 'mpesa.html')
                    
-            else:
-                messages.error(request, "Transaction failed. Please try again!")
-                return render(request, 'mpesa.html')
-        else:
-            messages.error(request, "Transaction failed. Please try again!")
-            return render(request, 'mpesa.html')
-    else:
+#             else:
+#                 messages.error(request, "Transaction failed. Please try again!")
+#                 return render(request, 'mpesa.html')
+#         else:
+#             messages.error(request, "Transaction failed. Please try again!")
+#             return render(request, 'mpesa.html')
+#     else:
         
-        return render(request, 'mpesa.html')
+#         return render(request, 'mpesa.html')
     
 
-# call back url
-@csrf_exempt
-def mpesa_callback(request):
+# # call back url
+# @csrf_exempt
+# def mpesa_callback(request):
     
-    print("this is the mpesa ressponse")
-    # Extract the response from the Daraja API
-    response = json.loads(request.body)
+#     print("this is the mpesa ressponse")
+#     # Extract the response from the Daraja API
+#     response = json.loads(request.body)
     
     
-    print(response)
+#     print(response)
     
-    result_code = response['Body']['stkCallback']['ResultCode']
-    amount = response['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value']
-    receipt_number = response['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value']
-    transaction_date = str(response['Body']['stkCallback']['CallbackMetadata']['Item'][3]['Value'])
-    transaction_date = datetime.datetime.strptime(transaction_date, '%Y%m%d%H%M%S')
-    formatted_date = transaction_date.strftime('%B %d, %Y %I:%M %p')
-    datetime_obj = datetime.datetime.strptime(formatted_date, '%B %d, %Y %I:%M %p')
-    formatted_datetime_str = datetime_obj.isoformat()
-    phone_number = response['Body']['stkCallback']['CallbackMetadata']['Item'][4]['Value']
+#     result_code = response['Body']['stkCallback']['ResultCode']
+#     amount = response['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value']
+#     receipt_number = response['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value']
+#     transaction_date = str(response['Body']['stkCallback']['CallbackMetadata']['Item'][3]['Value'])
+#     transaction_date = datetime.datetime.strptime(transaction_date, '%Y%m%d%H%M%S')
+#     formatted_date = transaction_date.strftime('%B %d, %Y %I:%M %p')
+#     datetime_obj = datetime.datetime.strptime(formatted_date, '%B %d, %Y %I:%M %p')
+#     formatted_datetime_str = datetime_obj.isoformat()
+#     phone_number = response['Body']['stkCallback']['CallbackMetadata']['Item'][4]['Value']
         
-    # Process the response
-    if result_code == 0:
-        # Payment was successful, update the UI
-        mpesa_payment = MpesaPayment.objects.create(
-            receipt_number = receipt_number,
-            phone_number = phone_number, 
-            amount = amount,
-            date = formatted_datetime_str,
-            status = True)
+#     # Process the response
+#     if result_code == 0:
+#         # Payment was successful, update the UI
+#         mpesa_payment = MpesaPayment.objects.create(
+#             receipt_number = receipt_number,
+#             phone_number = phone_number, 
+#             amount = amount,
+#             date = formatted_datetime_str,
+#             status = True)
         
-        mpesa_payment.save()
+#         mpesa_payment.save()
         
-        return render(request, 'success.html')
+#         return render(request, 'success.html')
         
-    else:
-       return render(request, 'failed.html')
+#     else:
+#        return render(request, 'failed.html')
