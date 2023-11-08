@@ -37,6 +37,8 @@ mailchimp.set_config({
 })
 
 # view used to check if there is successful connection between mailchimp and the app
+
+
 def mailchimp_ping_view(request):
     response = mailchimp.ping.get()
     return JsonResponse(response)
@@ -92,7 +94,8 @@ def unsubscribe_view(request):
                 form_email = form.cleaned_data['email']
                 # hashing the user's email using md5 to generate a subscriber hash will allow to manipulate the
                 # user's data
-                form_email_hash = hashlib.md5(form_email.encode('utf-8').lower()).hexdigest()
+                form_email_hash = hashlib.md5(
+                    form_email.encode('utf-8').lower()).hexdigest()
 
                 # member_update used to change the user data
                 member_update = {
@@ -135,7 +138,7 @@ def about(request):
 
 def sermon_list(request):
     sermons = Sermon.objects.filter(status='publish').order_by('-publish')
-    
+
     p = Paginator(sermons, 4)
     # getting the desired page number from url
     page_number = request.GET.get('page')
@@ -148,10 +151,10 @@ def sermon_list(request):
         # if page is empty then return the last page
         page_obj = p.page(p.num_pages)
 
-    return render(request, 
-                  'sermons.html', 
+    return render(request,
+                  'sermons.html',
                   {'sermons': page_obj})
-    
+
 
 def sermon_detail(request, year, month, day, sermon):
     sermon = get_object_or_404(Sermon, slug=sermon,
@@ -159,18 +162,18 @@ def sermon_detail(request, year, month, day, sermon):
                                publish__year=year,
                                publish__month=month,
                                publish__day=day)
-    return render(request, 
+    return render(request,
                   'sermon_detail.html',
                   {'sermon': sermon})
-    
+
 
 def career_list(request):
     careers = Career.objects.filter(status='publish').order_by('-publish')
 
-    return render(request, 
-                  'careers.html', 
-                  {'careers ': careers })
-    
+    return render(request,
+                  'careers.html',
+                  {'careers ': careers})
+
 
 def career_detail(request, year, month, day, career):
     career = get_object_or_404(Career, slug=career,
@@ -178,7 +181,7 @@ def career_detail(request, year, month, day, career):
                                publish__year=year,
                                publish__month=month,
                                publish__day=day)
-    return render(request, 
+    return render(request,
                   'career_detail.html',
                   {'career': career})
 
@@ -187,13 +190,13 @@ class EventList(ListView):
     queryset = Event.objects.filter(status='publish').order_by('-publish')
     template_name = 'events.html'
     paginate_by = 6
-    
+
 
 class EventDetail(DetailView):
     model = Event
     template_name = 'event_detail.html'
-    
-    
+
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -209,8 +212,10 @@ def contact(request):
             Message:\n\t\t{}\n
             Email:\n\t\t{}\n
             '''.format(form_data['name'], form_data['message'], form_data['email'],)
-        send_mail('You got a mail!', message, '', ['secretary@ackstpeterscathedralvoi.org'])
-        messages.success(request, 'Your message has been sent successfully. We will reach out to you as soon as possible')
+        send_mail('You got a mail!', message, '', [
+                  'secretary@ackstpeterscathedralvoi.org'])
+        messages.success(
+            request, 'Your message has been sent successfully. We will reach out to you as soon as possible')
         return render(request, 'contact.html')
 
     else:
@@ -236,27 +241,26 @@ def child_dedication(request):
         fathers_name = request.POST.get('fathers_name')
         fathers_contact = request.POST.get('fathers_contact')
         created = timezone.now()
-        
-        dedication_request = ChildDedication(
-            child_name = child_name,
-            child_gender = child_gender,
-            child_date_of_birth = child_date_of_birth,
-            date_of_dedication = date_of_dedication,
-            mothers_name = mothers_name,
-            mothers_contact = mothers_contact,
-            fathers_name = fathers_name,
-            fathers_contact = fathers_contact,
-            created = created)
 
-        
-        
+        dedication_request = ChildDedication(
+            child_name=child_name,
+            child_gender=child_gender,
+            child_date_of_birth=child_date_of_birth,
+            date_of_dedication=date_of_dedication,
+            mothers_name=mothers_name,
+            mothers_contact=mothers_contact,
+            fathers_name=fathers_name,
+            fathers_contact=fathers_contact,
+            created=created)
+
         dedication_request.save()
-        messages.success(request, 'You have successfully submitted your request.')
-        return render(request, 'child_dedication.html', 
-                    {'dedication_request': dedication_request})
-        
+        messages.success(
+            request, 'You have successfully submitted your request.')
+        return render(request, 'child_dedication.html',
+                      {'dedication_request': dedication_request})
+
     return render(request, 'child_dedication.html')
-        
+
 
 def new_member(request):
     if request.method == 'POST':
@@ -265,17 +269,18 @@ def new_member(request):
         current_church = request.POST.get('current_church')
         residential_area = request.POST.get('residential_area')
         created = timezone.now()
-        
+
         beleiver = NewBeleiver(
-            name = name,
-            phone_number = phone_number,
-            current_church = current_church,
-            residential_area = residential_area,
-            created = created
+            name=name,
+            phone_number=phone_number,
+            current_church=current_church,
+            residential_area=residential_area,
+            created=created
         )
-        
+
         beleiver.save()
-        messages.success(request, 'You have successfully registered in our church.')
+        messages.success(
+            request, 'You have successfully registered in our church.')
         return render(request, 'new_member.html',
                       {'beleiver': beleiver})
     else:
@@ -289,22 +294,23 @@ def prayer_request(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         created = timezone.now()
-        
+
         prayer = PrayerRequest(
-            name = name,
-            phone_number = phone_number,
-            title = title,
-            content = content,
-            created = created
+            name=name,
+            phone_number=phone_number,
+            title=title,
+            content=content,
+            created=created
         )
-        
+
         prayer.save()
-        messages.success(request, 'You have successfully submitted your request.')
-        return render(request, 'prayer_request.html', 
+        messages.success(
+            request, 'You have successfully submitted your request.')
+        return render(request, 'prayer_request.html',
                       {'prayer': prayer})
     else:
         return render(request, 'prayer_request.html')
-    
+
 
 def testimony(request):
     if request.method == 'POST':
@@ -313,42 +319,51 @@ def testimony(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         created = timezone.now()
-        
+
         testimony = Testimony(
-            name = name,
-            phone_number = phone_number,
-            title = title,
-            content = content,
-            created = created
+            name=name,
+            phone_number=phone_number,
+            title=title,
+            content=content,
+            created=created
         )
-        
+
         testimony.save()
-        messages.success(request, 'You have successfully submitted your request.')
+        messages.success(
+            request, 'You have successfully submitted your request.')
         return render(request, 'testimony.html',
-                      {'testimony':testimony})
+                      {'testimony': testimony})
     else:
         return render(request, 'testimony.html')
+
 
 def kama(request):
     return render(request, 'kama.html')
 
+
 def women(request):
     return render(request, 'women.html')
+
 
 def youth(request):
     return render(request, 'youth.html')
 
+
 def boys(request):
     return render(request, 'boys.html')
+
 
 def girls(request):
     return render(request, 'girls.html')
 
+
 def children(request):
     return render(request, 'children.html')
 
+
 def praise(request):
     return render(request, 'praise.html')
+
 
 def choir(request):
     return render(request, 'choir.html')
@@ -370,7 +385,8 @@ def give(request):
     api_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
     # initiate http call to mpesa sandbox
-    r = requests.get(api_url, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+    r = requests.get(api_url, auth=HTTPBasicAuth(
+        consumer_key, consumer_secret))
 
     # parsing the json string from safaricom
     mpesa_access_token = json.loads(r.text)
@@ -380,12 +396,13 @@ def give(request):
 
     return HttpResponse(validated_mpesa_access_token)
 
+
 def card(request):
     if request.method == 'POST':
         # retrieve nonce
         nonce = request.POST.get('payment_method_nonce', None)
         amount = request.POST.get('amount')
-        
+
         # create and submit transaction
         result = gateway.transaction.sale({
             'amount': amount,
@@ -394,7 +411,7 @@ def card(request):
                 'submit_for_settlement': True
             }
         })
-        
+
         if result.is_success:
             braintree_id = result.transaction.id
             name = request.POST.get('name')
@@ -402,54 +419,56 @@ def card(request):
             purpose = request.POST.get('purpose')
             amount = amount
             status = True
-            
+
             print(nonce)
-            
+
             payment = CardPayment(
-                braintree_id = braintree_id,
-                holder_name = name,
-                phone_number = phone_number,
-                purpose = purpose,
-                amount = amount,
-                status = status
+                braintree_id=braintree_id,
+                holder_name=name,
+                phone_number=phone_number,
+                purpose=purpose,
+                amount=amount,
+                status=status
             )
-            
+
             payment.save()
-            
-            messages.success(request, 'You have successfully submitted your request.')
+
+            messages.success(
+                request, 'You have successfully submitted your request.')
             return render(request, 'card.html')
-       
+
         else:
-            messages.error(request, 'Error Making Payment Please Try Again Later.')
+            messages.error(
+                request, 'Error Making Payment Please Try Again Later.')
             return render(request, 'card.html')
-    else:   
+    else:
         # generate token
         client_token = gateway.client_token.generate()
-        return render(request, 'coming_soon.html') # 'card.html',
-                      # {'client_token': client_token,})
-    
-    
+        return render(request, 'coming_soon.html')  # 'card.html',
+        # {'client_token': client_token,})
+
+
 # # mpesa STK PUSH
 # @csrf_exempt
 # def mpesa(request):
 #     if request.method == 'POST':
 #         phone_number = request.POST.get('phone_number')
 #         amount = request.POST.get('amount')
-        
+
 #         phone_number_1 = phone_number[1:]
-        
+
 #         str_phone_number = str(phone_number_1)
-        
+
 #         phone_number_2 = '254' + str_phone_number
-        
+
 #         print(phone_number_2)
-        
-        
+
+
 #         if request.POST.get('purpose') == 'other':
 #             purpose = request.POST.get('other-donation')
 #         else:
 #             purpose = request.POST.get('purpose')
-        
+
 #         access_token = MpesaAccessToken.validated_mpesa_access_token
 #         api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
@@ -472,24 +491,24 @@ def card(request):
 #         }
 
 #         response = requests.post(api_url, json=payload, headers=headers)
-        
+
 #         print("this is the response")
 #         print(response.text)
-        
-        
+
+
 #         # Parse response and save payment details to database
 #         print(response.status_code)
-        
+
 #         if response.status_code == 200:
 #             response_data = response.json()
 #             print(response_data)
-            
+
 #             if response_data['ResponseCode'] == '0':
-                            
-                        
+
+
 #                 messages.info(request, "Check your phone and enter the pin to complete the payment")
 #                 return render(request, 'mpesa.html')
-                   
+
 #             else:
 #                 messages.error(request, "Transaction failed. Please try again!")
 #                 return render(request, 'mpesa.html')
@@ -497,21 +516,21 @@ def card(request):
 #             messages.error(request, "Transaction failed. Please try again!")
 #             return render(request, 'mpesa.html')
 #     else:
-        
+
 #         return render(request, 'mpesa.html')
-    
+
 
 # # call back url
 # @csrf_exempt
 # def mpesa_callback(request):
-    
+
 #     print("this is the mpesa ressponse")
 #     # Extract the response from the Daraja API
 #     response = json.loads(request.body)
-    
-    
+
+
 #     print(response)
-    
+
 #     result_code = response['Body']['stkCallback']['ResultCode']
 #     amount = response['Body']['stkCallback']['CallbackMetadata']['Item'][0]['Value']
 #     receipt_number = response['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value']
@@ -521,20 +540,20 @@ def card(request):
 #     datetime_obj = datetime.datetime.strptime(formatted_date, '%B %d, %Y %I:%M %p')
 #     formatted_datetime_str = datetime_obj.isoformat()
 #     phone_number = response['Body']['stkCallback']['CallbackMetadata']['Item'][4]['Value']
-        
+
 #     # Process the response
 #     if result_code == 0:
 #         # Payment was successful, update the UI
 #         mpesa_payment = MpesaPayment.objects.create(
 #             receipt_number = receipt_number,
-#             phone_number = phone_number, 
+#             phone_number = phone_number,
 #             amount = amount,
 #             date = formatted_datetime_str,
 #             status = True)
-        
+
 #         mpesa_payment.save()
-        
+
 #         return render(request, 'success.html')
-        
+
 #     else:
 #        return render(request, 'failed.html')
